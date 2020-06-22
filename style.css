@@ -1,0 +1,19 @@
+body{
+
+}
+.campingLogoImg{
+width:200px;
+height:200px;
+display: box;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+}
+img{
+  width: 500px;
+  height: 500px;
+}
+
+.display{
+  display: none;
+}
