@@ -30,9 +30,9 @@ function getList(parks){
   var getlist = parks.data
   // console.log(getlist)
   // console.log(getlist[6].images[0].url)
-  var parkName = document.createElement('th');
-  var parkImg = document.createElement('th');
-  var buttonHead = document.createElement('th')
+  const parkName = document.createElement('th');
+  const parkImg = document.createElement('th');
+  const buttonHead = document.createElement('th')
 
   parkName.textContent = "Park Name"
   parkImg.textContent = "Park Image"
@@ -41,17 +41,17 @@ function getList(parks){
   tableRow.append(parkName, parkImg, buttonHead)
 
   tableBody.textContent = ''
-  for (var i = 0; i < getlist.length; i++) {
-    var tr = document.createElement('tr');
+  for (let i = 0; i < getlist.length; i++) {
+    const tr = document.createElement('tr');
     var parkNameTd = document.createElement('td')
     parkNameTd.textContent = getlist[i].fullName
 
-    var parkImgTd = document.createElement('td')
-    var img = document.createElement('img')
+    const parkImgTd = document.createElement('td')
+    const img = document.createElement('img')
     img.setAttribute('src', getlist[i].images[0].url)
     var buttondTd = document.createElement('td')
 
-    var button = document.createElement('button')
+    const button = document.createElement('button')
     button.setAttribute("class", getlist[i].parkCode)
     button.textContent = "Let's Go"
 
@@ -61,11 +61,11 @@ function getList(parks){
     parkImgTd.append(img)
 
     button.addEventListener("click", getPark)
-    function getPark(){
-      const table1 = document.getElementById('table1')
-      table1.setAttribute("class", "display")
-
-
+    const buttonClass =button.className
     }
+  function getPark() {
+    const table1 = document.getElementById('table1')
+    table1.setAttribute("class", "display")
+
  }
 }
