@@ -4,6 +4,7 @@ const tableRow = document.querySelector('tr')
 const tableBody = document.querySelector('tbody')
 const main = document.querySelector('div.main')
 searchButton.addEventListener('click',getParkList)
+const parkPage = document.querySelector('div.parkPage')
 
 function getParkList(){
   const inputField = document.getElementById("inputField")
@@ -13,23 +14,19 @@ function getParkList(){
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
     success: parks => {
       getList(parks)
-      //console.log(parks)
     },
     error: error => {
       console.log(error)
     }
   })
 }
-// function removeInput(){
-
-// }
 
 
 function getList(parks){
   main.setAttribute("class", "display")
   var getlist = parks.data
-  // console.log(getlist)
-  // console.log(getlist[6].images[0].url)
+  console.log(getlist)
+  //console.log(getlist[6].images[0].url)
   const parkName = document.createElement('th');
   const parkImg = document.createElement('th');
   const buttonHead = document.createElement('th')
@@ -52,7 +49,8 @@ function getList(parks){
     var buttondTd = document.createElement('td')
 
     const button = document.createElement('button')
-    button.setAttribute("class", getlist[i].parkCode)
+    button.setAttribute("id", getlist[i].parkCode)
+    button.setAttribute("class", "letsGo")
     button.textContent = "Let's Go"
 
     tableBody.append(tr);
@@ -61,11 +59,45 @@ function getList(parks){
     parkImgTd.append(img)
 
     button.addEventListener("click", getPark)
-    const buttonClass =button.className
+    //const buttonClass =button.className
     }
   function getPark() {
     const table1 = document.getElementById('table1')
     table1.setAttribute("class", "display")
-
+    getActivities()
  }
+}
+
+function getActivities(parks){
+  const letsGoButton = document.getElementsByClassName("letsGo")[0].id
+    $.ajax({
+      method: "GET",
+      url: "https://developer.nps.gov/api/v1/parks?parkCode=" + letsGoButton + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
+      success:
+        parks => {
+          //console.log(parks.data)
+          getListOfActivities(parks)
+        },
+      error: error => {
+        console.log(error)
+      }
+    })
+  }
+
+ function getListOfActivities(parks){
+   const activities = parks.data[0].activities
+   const description = parks.data[0].description
+   console.log(activities)
+   const paragraph = document.createElement('p')
+   paragraph.textContent = description
+   const ulList = document.createElement('ul')
+   parkPage.append(paragraph,ulList)
+
+   for(let i=0; i<activities.length; i++){
+     const list = document.createElement('li')
+     list.textContent = parks.data[0].activities[i].name
+     ulList.append(list)
+
+   }
+
 }
