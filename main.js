@@ -5,6 +5,7 @@ const tableBody = document.querySelector('tbody')
 const main = document.querySelector('div.main')
 searchButton.addEventListener('click',getParkList)
 const parkPage = document.querySelector('div.parkPage')
+const weather = document.querySelector('div.weather')
 
 function getParkList(){
   const inputField = document.getElementById("inputField")
@@ -87,9 +88,12 @@ function getActivities(parks){
  function getListOfActivities(parks){
    const activities = parks.data[0].activities
    const description = parks.data[0].description
+   const cityName = parks.data[0].addresses[0].city
    console.log(activities)
    const paragraph = document.createElement('p')
    paragraph.textContent = description
+   paragraph.setAttribute("class","city")
+   paragraph.setAttribute("id", cityName)
    const ulList = document.createElement('ul')
    parkPage.append(paragraph,ulList)
 
@@ -97,7 +101,30 @@ function getActivities(parks){
      const list = document.createElement('li')
      list.textContent = parks.data[0].activities[i].name
      ulList.append(list)
-
    }
+   getWeather()
+}
 
+
+function getWeather() {
+  const getCityName = document.getElementsByClassName("city")[0].id
+  $.ajax({
+    method: "GET",
+    url: "https://api.openweathermap.org/data/2.5/weather?q="+getCityName+"&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
+    success: data => {
+      //console.log(data)
+      //console.log(data.main.temp)
+
+      const currentWeather = document.createElement('p')
+      currentWeather.textContent = data.main.temp
+      weather.append(currentWeather)
+
+
+      // parkInfo.append(weather)
+    },
+    error: error => {
+      console.log(error)
+    }
+
+  })
 }
