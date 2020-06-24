@@ -118,13 +118,8 @@ button{
   padding:1.5rem;
   border-radius: 50%;
   justify-content: center;
+  cursor:pointer;
 }
-
-/* div>.button{
-  display: flex;
-  flex-wrap: wrap;
-} */
-
 .weather_table{
 padding:5rem;
 }
