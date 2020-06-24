@@ -3,7 +3,7 @@ const searchButton = document.getElementById("searchButton")
 const tableRow = document.querySelector('tr')
 const tableBody = document.querySelector('tbody')
 const main = document.querySelector('div.main')
-searchButton.addEventListener('click',getParkList)
+searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
 const currentWeather = document.getElementById('currentWeather')
@@ -15,7 +15,13 @@ const moreInfo = document.getElementById('moreInfo')
 const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
 const tenDayWeather = document.getElementById("tenDayWeather")
+$('.sk-chase').hide()
 
+function addLoading(){
+  $('.sk-chase').show()
+  $('.main').hide()
+  getParkList()
+}
 function getParkList(){
   const inputField = document.getElementById("inputField")
   const state = inputField.value;
@@ -23,6 +29,7 @@ function getParkList(){
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
     success: parks => {
+      $('.sk-chase').hide()
       getList(parks)
     },
     error: error => {
