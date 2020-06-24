@@ -4,19 +4,19 @@ const tableRow = document.querySelector('tr')
 const tableBody = document.querySelector('tbody')
 const main = document.querySelector('div.main')
 searchButton.addEventListener('click',getParkList)
-
+const aboutParkName = document.getElementById('parkName')
 // const weather = document.querySelector('div.weather')
-const currentWeatherText = document.getElementById('currentWeatherText')
+// const currentWeatherText = document.getElementById('currentWeatherText')
 const currentWeather = document.getElementById('currentWeather')
 const parkPage = document.getElementById('parkPage')
 const parkInfo= document.getElementById('parkInfo')
-const maxWeatherText = document.getElementById('maxWeatherText')
-const minWeatherText = document.getElementById('minWeatherText')
+// const maxWeatherText = document.getElementById('maxWeatherText')
+// const minWeatherText = document.getElementById('minWeatherText')
 const nameOfCity = document.getElementById('nameOfCity')
 const moreInfo = document.getElementById('moreInfo')
 const linkToUrl = document.getElementById('linkToUrl')
 const tenDayWeather = document.getElementById("tenDayWeather")
-const weatherIconText =document.getElementById('wetherIconText')
+
 function getParkList(){
   const inputField = document.getElementById("inputField")
   const state = inputField.value;
@@ -35,6 +35,7 @@ function getParkList(){
 
 function getList(parks){
   main.setAttribute("class", "display")
+
   var getlist = parks.data
   //console.log(getlist)
   //console.log(getlist[6].images[0].url)
@@ -100,7 +101,8 @@ function getActivities(parks){
    const activities = parks.data[0].activities
    const description = parks.data[0].description
    const cityName = parks.data[0].addresses[0].city
-   console.log(activities)
+   aboutParkName.textContent = parks.data[0].fullName
+   //console.log(activities)
    const paragraph = document.createElement('p')
    paragraph.textContent = description
    paragraph.setAttribute("class","city")
@@ -134,13 +136,19 @@ function getWeather() {
       nameOfCity.textContent = getCityName
 
       currentWeather.textContent = Math.floor(data.main.temp) + "°"
-      currentWeatherText.append(currentWeather)
       const maxWeather = document.getElementById('maxWeather')
       maxWeather.textContent = Math.floor(data.main.temp_max) + "°"
       const minWeather = document.getElementById('minWeather')
       minWeather.textContent = Math.floor(data.main.temp_min) + "°"
-      maxWeatherText.append(maxWeather)
-      minWeatherText.append(minWeather)
+
+      const weatherIconText = document.getElementById('weatherIconText')
+      weatherIconText.setAttribute('class', data.weather[0].icon)
+      const currentWeatherId = weatherIconText.getAttribute('class')
+      const forecastImg = document.getElementById('forecastImg')
+      const forecastRn = document.createElement('img')
+      forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
+
+      forecastImg.append(forecastRn)
       getTenDayWeather()
 
     },
@@ -157,7 +165,7 @@ function getTenDayWeather(){
     method:"GET",
     url: "https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=current,minutely,hourly&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success:data=>{
-      console.log(data.daily[0].weather[0].main)
+      //console.log(data.daily[0].weather[0].main)
       renderTenDayWeather(data)
     },
     error:error=>{
@@ -171,11 +179,12 @@ function renderTenDayWeather(data){
   for (let i=0;i<data.daily.length; i++){
     const eachDayWeather = document.createElement('tr')
     const max10Weather =document.createElement('td')
-    max10Weather.textContent = data.daily[i].temp.max
+    max10Weather.textContent = Math.floor(data.daily[i].temp.max) + "°"
     const min10Weather= document.createElement('td')
-    min10Weather.textContent= data.daily[i].temp.min
+    min10Weather.textContent = Math.floor(data.daily[i].temp.min) + "°"
     const weatherCondition = document.createElement('td')
     weatherCondition.textContent = data.daily[i].weather[0].main
+
     const weatherIcon = document.createElement('td')
     const weatherIconImg = document.createElement('img')
     weatherIcon.setAttribute('id', data.daily[i].weather[0].icon)

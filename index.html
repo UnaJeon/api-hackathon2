@@ -27,6 +27,7 @@
   </div><!--table1-->
 
   <div id ="parkPage" class= "park_Page display">
+    <h3>About <span id="parkName"></span></h3>
     <div id="parkInfo"></div>
     <div>
       <p id="moreInfo">Visit Website for More Info: <a id="linkToUrl"></a></p>
@@ -34,7 +35,7 @@
 
     <div id="weather" class="weatherSection">
       <h3>Weather in <span id="nameOfCity"></span></h3>
-      <table class="table">
+      <table>
         <thead>
          <tr class="table-primary">
           <th id="currentWeatherText">Current</th>
@@ -48,11 +49,13 @@
             <td id="currentWeather"></td>
             <td id="maxWeather"></td>
             <td id="minWeather"></td>
+            <td id="forecastImg"></td>
           </tr>
         </tbody>
       </table>
       <div clas="tenDayTable">
-       <table class="table">
+        <h3>7 days Weather Forecast</h3>
+       <table>
         <thead>
          <tr>
           <th>Highest</th>
