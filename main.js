@@ -77,12 +77,15 @@ function getList(parks){
   function getPark() {
     const table1 = document.getElementById('table1')
     table1.setAttribute("class", "display")
-    getActivities()
+    console.log("this is the Park id: " +this.id)
+    var parkId = this.id
+    console.log(parkId)
+    getActivities(parkId)
  }
 }
 
-function getActivities(parks){
-  const letsGoButton = document.getElementsByClassName("letsGo")[0].id
+function getActivities(parkIdParameter){
+  const letsGoButton = parkIdParameter
     $.ajax({
       method: "GET",
       url: "https://developer.nps.gov/api/v1/parks?parkCode=" + letsGoButton + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
@@ -130,7 +133,7 @@ function getWeather() {
     method: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?q="+getCityName+"&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success: data => {
-      //console.log(data)
+      console.log(data)
       //console.log(data.main.temp)
       parkPage.classList.remove("display")
       nameOfCity.textContent = getCityName
@@ -149,7 +152,11 @@ function getWeather() {
       forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
 
       forecastImg.append(forecastRn)
-      getTenDayWeather()
+      var latitude = data.coord.lat
+      var longitude = data.coord.lon
+      // console.log(data.coord.lat)
+      // console.log(data.coord.lon)
+      getSevenDayWeather(latitude,longitude)
 
     },
     error: error => {
@@ -159,14 +166,15 @@ function getWeather() {
   })
 }
 
-function getTenDayWeather(){
+function getSevenDayWeather(lat,long){
 
   $.ajax({
     method:"GET",
-    url: "https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=current,minutely,hourly&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
+    url: "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+long+"&exclude=current,minutely,hourly&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success:data=>{
       //console.log(data.daily[0].weather[0].main)
-      renderTenDayWeather(data)
+      console.log(data)
+      renderSevenDayWeather(data)
     },
     error:error=>{
       console.log(error)
@@ -175,7 +183,7 @@ function getTenDayWeather(){
 }
 
 
-function renderTenDayWeather(data){
+function renderSevenDayWeather(data){
   for (let i=0;i<data.daily.length; i++){
     const eachDayWeather = document.createElement('tr')
     const max10Weather =document.createElement('td')
