@@ -1,32 +1,57 @@
 
-
 body{
-width:100%;
+width:1000px;
 height: 97vh;
 margin: auto;
 font-family: 'pine_forestpersonal_use';
 font-size:15px;
+background-color:#e9c46a ;
+/* display: flex; */
 }
+.main{
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:
+}
+.table{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin:0 auto;
+}
+.park_Page{
+  width: 100%;
+  font-size: 2rem;
+}
+.city{
+  border:5px solid #f4a261;
+  padding: 1.5rem;
 
+}
 h3{
   font-family: 'swistblnk_monthoersregular';
   font-weight: bold;
   font-style: normal;
   font-size: 3rem;
+  text-align: center;
 
 }
 .campingLogoImg{
 width:200px;
 height:200px;
-display: box;
-justify-content: center;
-align-items: center;
 border-radius: 50%;
 
 }
 img{
-  width: 500px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
 }
 
 .display{
@@ -61,9 +86,35 @@ margin-top: 16px;
     font-style: normal;
 
 }
-
 button{
-  background-color:#E9C46A;
+  background-color:#2a9d8f;
   font-family: 'pine_forestpersonal_use';
   text-align:center;
+  font-size: 1.5rem;
+  padding:1rem;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+div>.button{
+  display: flex;
+  flex-wrap: wrap;
+}
+input{
+  font-family: 'swistblnk_monthoersregular';
+  color:#333;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255,255,255);
+  border: none;
+  width:30%;
+  /* display: block; */
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+
+}
+.weather_table{
+padding:5rem;
 }
