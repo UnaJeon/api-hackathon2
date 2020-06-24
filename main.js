@@ -138,11 +138,11 @@ function getWeather() {
       parkPage.classList.remove("display")
       nameOfCity.textContent = getCityName
 
-      currentWeather.textContent = Math.floor(data.main.temp) + "°"
+      currentWeather.textContent = Math.floor(data.main.temp) + " °F"
       const maxWeather = document.getElementById('maxWeather')
-      maxWeather.textContent = Math.floor(data.main.temp_max) + "°"
+      maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
       const minWeather = document.getElementById('minWeather')
-      minWeather.textContent = Math.floor(data.main.temp_min) + "°"
+      minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
 
       const weatherIconText = document.getElementById('weatherIconText')
       weatherIconText.setAttribute('class', data.weather[0].icon)
@@ -187,12 +187,17 @@ function renderSevenDayWeather(data){
   for (let i=0;i<data.daily.length; i++){
     const eachDayWeather = document.createElement('tr')
     const max10Weather =document.createElement('td')
-    max10Weather.textContent = Math.floor(data.daily[i].temp.max) + "°"
+    max10Weather.textContent = Math.floor(data.daily[i].temp.max) + "°F"
     const min10Weather= document.createElement('td')
-    min10Weather.textContent = Math.floor(data.daily[i].temp.min) + "°"
+    min10Weather.textContent = Math.floor(data.daily[i].temp.min) + "°F"
     const weatherCondition = document.createElement('td')
     weatherCondition.textContent = data.daily[i].weather[0].main
+    const dayofWeather =document.createElement('td')
 
+    var day = new Date((data.daily[i].dt) * 1000)
+    var dayArray =['Sun','Mon','Tue','Wed','Thur','Fri','Sat','Sun']
+    var getDay = dayArray[day.getDay()]
+    dayofWeather.textContent = getDay
     const weatherIcon = document.createElement('td')
     const weatherIconImg = document.createElement('img')
     weatherIcon.setAttribute('id', data.daily[i].weather[0].icon)
@@ -202,7 +207,7 @@ function renderSevenDayWeather(data){
     weatherIconImg.setAttribute('src', 'http://openweathermap.org/img/wn/'+weatherId+'@2x.png')
 
 
-    eachDayWeather.append(max10Weather,min10Weather,weatherCondition,weatherIcon)
+    eachDayWeather.append(dayofWeather,max10Weather,min10Weather,weatherCondition,weatherIcon)
     tenDayWeather.append(eachDayWeather)
     weatherIcon.append(weatherIconImg)
 
