@@ -5,15 +5,14 @@ const tableBody = document.querySelector('tbody')
 const main = document.querySelector('div.main')
 searchButton.addEventListener('click',getParkList)
 const aboutParkName = document.getElementById('parkName')
-// const weather = document.querySelector('div.weather')
-// const currentWeatherText = document.getElementById('currentWeatherText')
+
 const currentWeather = document.getElementById('currentWeather')
 const parkPage = document.getElementById('parkPage')
 const parkInfo= document.getElementById('parkInfo')
-// const maxWeatherText = document.getElementById('maxWeatherText')
-// const minWeatherText = document.getElementById('minWeatherText')
+
 const nameOfCity = document.getElementById('nameOfCity')
 const moreInfo = document.getElementById('moreInfo')
+const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
 const tenDayWeather = document.getElementById("tenDayWeather")
 
@@ -47,7 +46,7 @@ function getList(parks){
   parkImg.textContent = "Park Image"
   buttonHead.textContent = "Find Activities"
 
-  tableRow.append(parkName, parkImg, buttonHead)
+  tableRow.append(parkImg,parkName,  buttonHead)
 
   tableBody.textContent = ''
   for (let i = 0; i < getlist.length; i++) {
@@ -59,7 +58,8 @@ function getList(parks){
     const img = document.createElement('img')
     const url = getlist[i].images[0].url
     img.setAttribute('src', url)
-    var buttondTd = document.createElement('td')
+    img.setAttribute('class','parkImg')
+    const buttondTd = document.createElement('td')
 
     const button = document.createElement('button')
     button.setAttribute("id", getlist[i].parkCode)
@@ -68,7 +68,7 @@ function getList(parks){
 
     tableBody.append(tr);
     buttondTd.append(button)
-    tr.append(parkNameTd, parkImgTd, buttondTd)
+    tr.append(parkImgTd,parkNameTd, buttondTd)
     parkImgTd.append(img)
 
     button.addEventListener("click", getPark)
@@ -79,7 +79,7 @@ function getList(parks){
     table1.setAttribute("class", "display")
     console.log("this is the Park id: " +this.id)
     var parkId = this.id
-    console.log(parkId)
+    //console.log(parkId)
     getActivities(parkId)
  }
 }
@@ -111,7 +111,8 @@ function getActivities(parkIdParameter){
    paragraph.setAttribute("class","city")
    paragraph.setAttribute("id", cityName)
    const ulList = document.createElement('ul')
-   parkInfo.append(paragraph,ulList)
+   parkInfo.append(paragraph)
+   activTitle.append(ulList)
 
    for(let i=0; i<activities.length; i++){
      const list = document.createElement('li')

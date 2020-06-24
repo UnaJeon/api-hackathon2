@@ -1,6 +1,6 @@
 
 body{
-width:1000px;
+width:1250px;
 height: 97vh;
 margin: auto;
 font-family: 'pine_forestpersonal_use';
@@ -11,27 +11,49 @@ background-color:#e9c46a ;
 .main{
   width:100%;
   height: 100vh;
+  margin: 0 auto;
+  color:#173f5f;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color:
+}
+
+input{
+  font-family: 'swistblnk_monthoersregular';
+  color:#333;
+  font-size: 1.5rem;
+  margin: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255,255,255);
+  border: none;
+  width:48%;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.searchButton{
+text-align: center;
+
 }
 .table{
   width:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: 2rem;
-  margin:0 auto;
+  margin: 3rem auto;
+  /* border: 5px solid black; */
+  padding: 2rem;
 }
+/* tr{
+  padding:2rem;
+} */
 .park_Page{
   width: 100%;
   font-size: 2rem;
 }
 .city{
-  border:5px solid #f4a261;
+  border:10px solid #264653;
+  border-radius: 15px;
   padding: 1.5rem;
 
 }
@@ -41,7 +63,6 @@ h3{
   font-style: normal;
   font-size: 3rem;
   text-align: center;
-
 }
 .campingLogoImg{
 width:200px;
@@ -49,9 +70,11 @@ height:200px;
 border-radius: 50%;
 
 }
-img{
+.parkImg{
   width: 300px;
   height: 200px;
+  border-radius: 30px;
+  padding:1rem;
 }
 
 .display{
@@ -60,6 +83,7 @@ img{
 table{
 text-align: center;
 margin-top: 16px;
+color:#173f5f;
 
 }
 @font-face {
@@ -91,30 +115,16 @@ button{
   font-family: 'pine_forestpersonal_use';
   text-align:center;
   font-size: 1.5rem;
-  padding:1rem;
+  padding:1.5rem;
   border-radius: 50%;
   justify-content: center;
 }
 
-div>.button{
+/* div>.button{
   display: flex;
   flex-wrap: wrap;
-}
-input{
-  font-family: 'swistblnk_monthoersregular';
-  color:#333;
-  font-size: 1.5rem;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-  border-radius: 0.2rem;
-  background-color: rgb(255,255,255);
-  border: none;
-  width:30%;
-  /* display: block; */
-  border-bottom: 0.3rem solid transparent;
-  transition: all 0.3s;
+} */
 
-}
 .weather_table{
 padding:5rem;
 }
