@@ -1,12 +1,17 @@
 
 const searchButton = document.getElementById("searchButton")
-const tableRow = document.querySelector('tr')
-const tableBody = document.querySelector('tbody')
-const main = document.querySelector('div.main')
+const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
+const cardSection = document.getElementById("cardSection")
 const currentWeather = document.getElementById('currentWeather')
+const maxWeather = document.getElementById('maxWeather')
+const minWeather = document.getElementById('minWeather')
+
+const weatherIconText = document.getElementById('weatherIconText')
+const forecastImg = document.getElementById('forecastImg')
+
 const parkPage = document.getElementById('parkPage')
 const parkInfo= document.getElementById('parkInfo')
 
@@ -38,59 +43,47 @@ function getParkList(){
   })
 }
 
-
-function getList(parks){
-  main.setAttribute("class", "display")
-
+function getList(parks) {
+  frontPage.setAttribute("class", "display")
   var getlist = parks.data
-  //console.log(getlist)
-  //console.log(getlist[6].images[0].url)
-  const parkName = document.createElement('th');
-  const parkImg = document.createElement('th');
-  const buttonHead = document.createElement('th')
+  //tableBody.textContent = ''
 
-  parkName.textContent = "Park Name"
-  parkImg.textContent = "Park Image"
-  buttonHead.textContent = "Find Activities"
-
-  tableRow.append(parkImg,parkName,  buttonHead)
-
-  tableBody.textContent = ''
   for (let i = 0; i < getlist.length; i++) {
-    const tr = document.createElement('tr');
-    const parkNameTd = document.createElement('td')
-    parkNameTd.textContent = getlist[i].fullName
-
-    const parkImgTd = document.createElement('td')
+    const cardDiv = document.createElement('div')
+    cardDiv.setAttribute("class", "card")
+    cardDiv.style.width = "18rem"
     const img = document.createElement('img')
     const url = getlist[i].images[0].url
     img.setAttribute('src', url)
-    img.setAttribute('class','parkImg')
-    const buttondTd = document.createElement('td')
-
+    img.setAttribute('class', 'card-img-top')
+    const cardBodyDiv = document.createElement('div')
+    cardBodyDiv.setAttribute('class', 'card-body')
+    const cardTitle = document.createElement('h5')
+    cardTitle.setAttribute('class', 'card-title')
+    cardTitle.textContent = getlist[i].fullName
+    // const cardContent = document.createElement('p')
+    // cardContent.setAttribute('class', 'card-text')
+    // cardContent.textContent = "paragraph"
     const button = document.createElement('button')
-    button.setAttribute("id", getlist[i].parkCode)
-    button.setAttribute("class", "letsGo")
+    button.setAttribute('class', 'btn btn-primary')
     button.textContent = "Let's Go"
+    button.setAttribute('id', getlist[i].parkCode)
 
-    tableBody.append(tr);
-    buttondTd.append(button)
-    tr.append(parkImgTd,parkNameTd, buttondTd)
-    parkImgTd.append(img)
+    cardSection.append(cardDiv)
+    cardDiv.append(img, cardBodyDiv)
+    cardBodyDiv.append(cardTitle, button)
 
     button.addEventListener("click", getPark)
 
-    }
-  function getPark() {
-    const table1 = document.getElementById('table1')
-    table1.setAttribute("class", "display")
+  }
+    function getPark() {
+    cardSection.setAttribute('class','display')
     console.log("this is the Park id: " +this.id)
     var parkId = this.id
     //console.log(parkId)
     getActivities(parkId)
- }
-}
-
+    }
+  }
 function getActivities(parkIdParameter){
   const letsGoButton = parkIdParameter
     $.ajax({
@@ -141,12 +134,10 @@ function getWeather() {
     method: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?q="+getCityName+"&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success: data => {
-      //console.log(data)
       //console.log(data.main.temp)
       parkPage.classList.remove("display")
       nameOfCity.textContent = getCityName
       renderCurrentWeather(data)
-
     },
     error: error => {
       console.log(error)
@@ -156,25 +147,20 @@ function getWeather() {
 }
 
 function renderCurrentWeather(data){
-
   currentWeather.textContent = Math.floor(data.main.temp) + " °F"
-  const maxWeather = document.getElementById('maxWeather')
   maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
-  const minWeather = document.getElementById('minWeather')
   minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
 
-  const weatherIconText = document.getElementById('weatherIconText')
   weatherIconText.setAttribute('class', data.weather[0].icon)
   const currentWeatherId = weatherIconText.getAttribute('class')
-  const forecastImg = document.getElementById('forecastImg')
+
   const forecastRn = document.createElement('img')
   forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
 
   forecastImg.append(forecastRn)
   var latitude = data.coord.lat
   var longitude = data.coord.lon
-  // console.log(data.coord.lat)
-  // console.log(data.coord.lon)
+
   getSevenDayWeather(latitude, longitude)
 }
 
