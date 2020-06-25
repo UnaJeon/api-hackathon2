@@ -141,30 +141,11 @@ function getWeather() {
     method: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?q="+getCityName+"&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success: data => {
-      console.log(data)
+      //console.log(data)
       //console.log(data.main.temp)
       parkPage.classList.remove("display")
       nameOfCity.textContent = getCityName
-
-      currentWeather.textContent = Math.floor(data.main.temp) + " °F"
-      const maxWeather = document.getElementById('maxWeather')
-      maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
-      const minWeather = document.getElementById('minWeather')
-      minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
-
-      const weatherIconText = document.getElementById('weatherIconText')
-      weatherIconText.setAttribute('class', data.weather[0].icon)
-      const currentWeatherId = weatherIconText.getAttribute('class')
-      const forecastImg = document.getElementById('forecastImg')
-      const forecastRn = document.createElement('img')
-      forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
-
-      forecastImg.append(forecastRn)
-      var latitude = data.coord.lat
-      var longitude = data.coord.lon
-      // console.log(data.coord.lat)
-      // console.log(data.coord.lon)
-      getSevenDayWeather(latitude,longitude)
+      renderCurrentWeather(data)
 
     },
     error: error => {
@@ -172,6 +153,29 @@ function getWeather() {
     }
 
   })
+}
+
+function renderCurrentWeather(data){
+
+  currentWeather.textContent = Math.floor(data.main.temp) + " °F"
+  const maxWeather = document.getElementById('maxWeather')
+  maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
+  const minWeather = document.getElementById('minWeather')
+  minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
+
+  const weatherIconText = document.getElementById('weatherIconText')
+  weatherIconText.setAttribute('class', data.weather[0].icon)
+  const currentWeatherId = weatherIconText.getAttribute('class')
+  const forecastImg = document.getElementById('forecastImg')
+  const forecastRn = document.createElement('img')
+  forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
+
+  forecastImg.append(forecastRn)
+  var latitude = data.coord.lat
+  var longitude = data.coord.lon
+  // console.log(data.coord.lat)
+  // console.log(data.coord.lon)
+  getSevenDayWeather(latitude, longitude)
 }
 
 function getSevenDayWeather(lat,long){
