@@ -4,12 +4,12 @@ const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
-const cardSection = document.getElementById("cardSection")
+const cardSection = document.querySelector("section.cardSection")
 const currentWeather = document.getElementById('currentWeather')
 const maxWeather = document.getElementById('maxWeather')
 const minWeather = document.getElementById('minWeather')
 
-const weatherIconText = document.getElementById('weatherIconText')
+const weatherIcon = document.querySelector('div.weatherIcon')
 const forecastImg = document.getElementById('forecastImg')
 
 const parkPage = document.getElementById('parkPage')
@@ -77,7 +77,7 @@ function getList(parks) {
 
   }
     function getPark() {
-    cardSection.setAttribute('class','display')
+    cardSection.className +=" display"
     console.log("this is the Park id: " +this.id)
     var parkId = this.id
     //console.log(parkId)
@@ -148,11 +148,11 @@ function getWeather() {
 
 function renderCurrentWeather(data){
   currentWeather.textContent = Math.floor(data.main.temp) + " °F"
-  maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
-  minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
+  maxWeather.textContent = "Highest: " + Math.floor(data.main.temp_max) + " °F"
+  minWeather.textContent = "Lowest: " + Math.floor(data.main.temp_min) + " °F"
 
-  weatherIconText.setAttribute('class', data.weather[0].icon)
-  const currentWeatherId = weatherIconText.getAttribute('class')
+  weatherIcon.setAttribute('class', data.weather[0].icon)
+  const currentWeatherId = weatherIcon.getAttribute('class')
 
   const forecastRn = document.createElement('img')
   forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
