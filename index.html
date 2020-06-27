@@ -34,50 +34,33 @@
 
   <section id="parkPage" class= "display">
     <div class="park_Page">
-      <h3>About <span id="parkName"></span></h3>
-      <div id="parkInfo"></div>
-      <div>
+      <h3><span id="parkName"></span></h3>
+      <div class="flex">
+        <div class="box" id="box">
+          <div id="imgBox" class="imgBox"></div>
+          <div id="contentBox" class="contentBox"></div>
+        </div>
+          <div class="weatherContainer">
+              <div class="weather">
+                <div class="city"><span id="nameOfCity"></span></div>
+                <div class="temp" id="currentWeather"></div>
+                <div class="weatherIcon" id="forecastImg"></div>
+                <div class="max" id="maxWeather"></div>
+                <div class="min" id="minWeather"></div>
+              </div>
+           </div>
+    </div>
+      <div class="activities">
         <h4 id="activTitle">Activities You Can Do...</h4>
-        <p id="moreInfo">Visit Website for More Info: <a id="linkToUrl"></a></p>
+        <p id="moreInfo">Visit Website for More Info: <a id="linkToUrl" target="_blank" ></a></p>
       </div>
 
-      <div id="weather" class="weatherSection">
-        <section id="currentWeatherWidget">
-          <div class="weatherContainer">
-            <div class="col-md-4 col-md-offset-4">
-              <div class="weather">
-                    <div class="city"><span id="nameOfCity"></span></div>
-                    <div class="temp" id="currentWeather"></div>
-                    <div class="wind" id="maxWeather"></div>
-                    <div class="wind" id="minWeather"></div>
-                    <div class="weatherIcon" id="forecastImg"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- <h3>Weather in <span id="nameOfCity"></span></h3>
-        <table class="table">
-          <thead>
-            <tr class="table-primary">
-              <th id="currentWeatherText">Current</th>
-              <th id="maxWeatherText">Highest</th>
-              <th id="minWeatherText">Lowest</th>
-              <th id="weatherIconText">Forecast</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="currentWeather"></td>
-              <td id="maxWeather"></td>
-              <td id="minWeather"></td>
-              <td id="forecastImg"></td>
-            </tr>
-          </tbody>
-        </table> -->
+      <!-- <div id="weather" class="weatherSection"> -->
+
 
         <div class="sevenDayTable">
-          <h3>7 Days Weather Forecast</h3>
-          <table class="table">
+          <h3><button id="sevenDays" class="btn btn-outline-secondary">7 Days Weather Forecast</button></h3>
+          <table class="table display">
             <thead>
               <tr>
                 <th>Day</th>
@@ -87,12 +70,12 @@
                 <th>Forecast</th>
               </tr>
             </thead>
-            <tbody id="tenDayWeather"></tbody>
+            <tbody id="sevenDayWeather"></tbody>
           </table>
 
         </div>
       </div>
-    </div>
+
   </section>
 
 

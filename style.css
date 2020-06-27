@@ -3,10 +3,9 @@ body{
 width:1250px;
 height: 97vh;
 margin: auto;
-/* font-family: 'pine_forestpersonal_use'; */
-font-size:15px;
 
 }
+
 form{
     position: relative;
     top: 50%;
@@ -21,7 +20,6 @@ form{
     border: 4px solid white;
     padding: 5px;
 }
-
 input{
     position: absolute;
     top: 0;
@@ -36,12 +34,11 @@ input{
     border-radius: 20px;
     padding: 0 20px;
 }
-
 .fa{
     box-sizing: border-box;
     padding: 10px;
-    width: 70px;
-    height: 65px;
+    width: 45px;
+    height: 45px;
     position: absolute;
     top: 0;
     right: 0;
@@ -51,16 +48,13 @@ input{
     font-size: 2em;
     transition: all 1s;
 }
-
 form:hover{
     width: 300px;
     cursor: pointer;
 }
-
 form:hover input{
     display: block;
 }
-
 form:hover .fa{
     background: #07051a;
     color: white;
@@ -68,40 +62,108 @@ form:hover .fa{
 .main{
   width:100%;
   height: 100vh;
-  margin: 0 ;
-
+  margin: auto;
+  background-image: url(images/zion-National-Park.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .searchButton{
 text-align: center;
-
+}
+button{
+  text-align: left;
 }
 .table{
-  width:100%;
-  font-size: 2rem;
+  width:70%;
+  font-size: 1rem;
   margin: 3rem auto;
   padding: 2rem;
 }
-
 .park_Page{
   width: 100%;
-  font-size: 1.5rem;
+  padding:3rem;
+
+}
+.flex{
+  width:100%;
+  display: flex;
+}
+.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 80%;
+  margin: auto;
 }
 
+.imgBox{
+flex-basis: 40%;;
+}
+.contentBox{
+  font-size: 1rem;
+  font-family: 'Lato';
+  flex-basis: 60%;
+}
+.weatherContainer{
+flex-basis: 20%;
+}
+ .weather
+    {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 0px 1px 10px 0px #cfcfcf;
+    color: black;
+    padding: 10px;
+    margin: 0 auto;
+    width:80%;
+
+    }
+.temp
+ {
+  font-size: 30px;
+  }
+.flex{
+  display: flex;
+  width: 100%;
+}
 h3{
   font-family: 'Lato';
   font-weight: bold;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
+  margin: 2rem;
 }
+.parkImage{
+  height:250px;
+  width: 300px;
+  align-self: left;
+  border-radius: 5%;
+  margin-right: 10px;
+}
+.activities{
+margin-top: 1rem;
+}
+ul {
+  list-style-type: circle;
+  border: 2px solid lightgrey;
+  border-radius: 3%;
+}
+li {
+  margin: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
 
 table{
 text-align: center;
 margin-top: 16px;
 color:#173f5f;
 font-family: 'Lato', sans-serif;
-
 }
 
 @font-face {
@@ -112,17 +174,7 @@ font-family: 'Lato', sans-serif;
     font-style: normal;
 
 }
-button{
-  background-color:#2a9d8f;
-  /* font-family: 'pine_forestpersonal_use'; */
-  font-family: 'Lato', sans-serif;
-  text-align:center;
-  font-size: 1.5rem;
-  padding:1.5rem;
-  border-radius: 50%;
-  justify-content: center;
-  cursor:pointer;
-}
+
 .weather_table{
 padding:5rem;
 }
@@ -185,6 +237,7 @@ padding:5rem;
 .cardSection{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-img-top {
@@ -194,21 +247,6 @@ padding:5rem;
   margin-right: 10px;
   margin-top: 10px;
 }
- .weather
-    {
-    display: flex;
-    flex-flow: column wrap;
-    box-shadow: 0px 1px 10px 0px #cfcfcf;
-    color: black;
-    padding: 20px;
-    margin: 0 auto;
-    width:100%;
-
-    }
-.temp
- {
-  font-size: 56px;
-  }
 
 .display{
   display: none;
