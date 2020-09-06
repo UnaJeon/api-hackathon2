@@ -4,22 +4,25 @@ const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
-const cardSection = document.getElementById("cardSection")
+const cardSection = document.querySelector("section.cardSection")
 const currentWeather = document.getElementById('currentWeather')
 const maxWeather = document.getElementById('maxWeather')
 const minWeather = document.getElementById('minWeather')
 
-const weatherIconText = document.getElementById('weatherIconText')
+const weatherIcon = document.querySelector('div.weatherIcon')
 const forecastImg = document.getElementById('forecastImg')
-
+const box = document.getElementById('box')
+const contentBox = document.getElementById('contentBox')
+const imgBox = document.getElementById('imgBox')
 const parkPage = document.getElementById('parkPage')
-const parkInfo= document.getElementById('parkInfo')
+// const parkInfo= document.getElementById('parkInfo')
 
 const nameOfCity = document.getElementById('nameOfCity')
 const moreInfo = document.getElementById('moreInfo')
 const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
-const tenDayWeather = document.getElementById("tenDayWeather")
+const table= document.querySelector('table')
+const sevenDayWeather = document.getElementById("sevenDayWeather")
 $('.sk-chase').hide()
 
 function addLoading(){
@@ -77,7 +80,7 @@ function getList(parks) {
 
   }
     function getPark() {
-    cardSection.setAttribute('class','display')
+    cardSection.className +=" display"
     console.log("this is the Park id: " +this.id)
     var parkId = this.id
     //console.log(parkId)
@@ -101,17 +104,27 @@ function getActivities(parkIdParameter){
   }
 
  function getListOfActivities(parks){
+   console.log(parks.data)
    const activities = parks.data[0].activities
    const description = parks.data[0].description
    const cityName = parks.data[0].addresses[0].city
+   const getParkImg = parks.data[0].images[1].url
    aboutParkName.textContent = parks.data[0].fullName
    //console.log(activities)
    const paragraph = document.createElement('p')
+   const parkImage = document.createElement('img')
+   parkImage.setAttribute('src',getParkImg)
+   parkImage.setAttribute('class', 'parkImage')
    paragraph.textContent = description
    paragraph.setAttribute("class","city")
    paragraph.setAttribute("id", cityName)
+
    const ulList = document.createElement('ul')
-   parkInfo.append(paragraph)
+   box.append(imgBox, contentBox)
+   contentBox.append(paragraph)
+
+   imgBox.append(parkImage)
+   getWeather()
    activTitle.append(ulList)
 
    for(let i=0; i<activities.length; i++){
@@ -120,11 +133,10 @@ function getActivities(parkIdParameter){
      ulList.append(list)
      linkToUrl.textContent =parks.data[0].url
 
-
      linkToUrl.setAttribute('href',parks.data[0].url)
      moreInfo.append(linkToUrl)
+
    }
-   getWeather()
 }
 
 
@@ -145,14 +157,14 @@ function getWeather() {
 
   })
 }
-
+const sevenDays = document.getElementById("sevenDays")
 function renderCurrentWeather(data){
   currentWeather.textContent = Math.floor(data.main.temp) + " °F"
-  maxWeather.textContent = Math.floor(data.main.temp_max) + " °F"
-  minWeather.textContent = Math.floor(data.main.temp_min) + " °F"
+  maxWeather.textContent = "Highest: " + Math.floor(data.main.temp_max) + " °F"
+  minWeather.textContent = "Lowest: " + Math.floor(data.main.temp_min) + " °F"
 
-  weatherIconText.setAttribute('class', data.weather[0].icon)
-  const currentWeatherId = weatherIconText.getAttribute('class')
+  weatherIcon.setAttribute('class', data.weather[0].icon)
+  const currentWeatherId = weatherIcon.getAttribute('class')
 
   const forecastRn = document.createElement('img')
   forecastRn.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentWeatherId + '@2x.png')
@@ -161,9 +173,15 @@ function renderCurrentWeather(data){
   var latitude = data.coord.lat
   var longitude = data.coord.lon
 
-  getSevenDayWeather(latitude, longitude)
+   getSevenDayWeather(latitude, longitude)
+
 }
 
+sevenDays.addEventListener('click', showTable)
+
+function showTable(){
+  table.classList.toggle('display')
+}
 function getSevenDayWeather(lat,long){
 
   $.ajax({
@@ -172,6 +190,7 @@ function getSevenDayWeather(lat,long){
     success:data=>{
       //console.log(data.daily[0].weather[0].main)
       console.log(data)
+
       renderSevenDayWeather(data)
     },
     error:error=>{
@@ -206,7 +225,7 @@ function renderSevenDayWeather(data){
 
 
     eachDayWeather.append(dayofWeather,max10Weather,min10Weather,weatherCondition,weatherIcon)
-    tenDayWeather.append(eachDayWeather)
+    sevenDayWeather.append(eachDayWeather)
     weatherIcon.append(weatherIconImg)
 
   }
