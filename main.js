@@ -23,11 +23,9 @@ const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
 const table= document.querySelector('table')
 const sevenDayWeather = document.getElementById("sevenDayWeather")
-$('.loader').hide()
 $('.loading-text').hide()
 
 function addLoading(){
-  $('.loader').show()
   $('.loading-text').show()
   $('.main').hide()
   $('.bg-text').hide()
@@ -40,7 +38,6 @@ function getParkList(){
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
     success: parks => {
-      $('.loader').hide()
       $('.loading-text').hide()
       getList(parks)
     },
@@ -49,7 +46,18 @@ function getParkList(){
     }
   })
 }
-
+const postcard = document.getElementById("loading-postcards")
+const cards = ["npr-postcards-1.jpg", "npr-postcards-2.jpg", "npr-postcards-3.jpg", "npr-postcards-4.jpg", "npr-postcards-.jpg", "npr-postcards-6.jpg"]
+function showPostcards(){
+  if ($('.loading-text').show()){
+    for(let i=0; i<cards.length; i++){
+      postcard.setAttribute('src', 'images/' +cards[i])
+    }
+  } else if ($('.loading-text').hide()) {
+    clearInterval(intervalId)
+  }
+}
+const intervalId =setInterval(showPostcards,1000)
 function getList(parks) {
   frontPage.setAttribute("class", "display")
   var getlist = parks.data
