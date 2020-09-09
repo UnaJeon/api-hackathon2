@@ -12,23 +12,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section id="loadingSpinner" class="sk-chase">
-      <div >
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-      </div>
+  <section class="loadingSpinner">
+
+  <div class="loading-text">
+    <div class="loader"></div>
+    <img class="loading-postcards" src="images/national-park-review-postcards-amber-share-1.jpg" alt="review postcards" />
+  </div>
+
   </section>
 
   <section id="frontPage" >
     <div class="main"></div>
-    <div class="bg-text">
+    <div class="bg-text form-group">
       <h2>National Parks and Weather Finder</h2>
-      <input type="search" id="inputField" placeholder="Enter State Code ex.CA">
-      <i class="fa fa-search" id="searchButton"></i>
+      <input type="text" class="form-control" id="inputField" placeholder="Enter State Code ex.CA">
+      <button type="button" id="searchButton" class="btn btn-primary mt-2">Search<i class="fa fa-search ml-3" ></i></button>
     </div>
 
   </section>

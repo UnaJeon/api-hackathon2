@@ -23,11 +23,14 @@ const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
 const table= document.querySelector('table')
 const sevenDayWeather = document.getElementById("sevenDayWeather")
-$('.sk-chase').hide()
+$('.loader').hide()
+$('.loading-text').hide()
 
 function addLoading(){
-  $('.sk-chase').show()
+  $('.loader').show()
+  $('.loading-text').show()
   $('.main').hide()
+  $('.bg-text').hide()
   getParkList()
 }
 function getParkList(){
@@ -37,7 +40,8 @@ function getParkList(){
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
     success: parks => {
-      $('.sk-chase').hide()
+      $('.loader').hide()
+      $('.loading-text').hide()
       getList(parks)
     },
     error: error => {
@@ -53,30 +57,26 @@ function getList(parks) {
 
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
-    cardDiv.setAttribute("class", "card")
-    cardDiv.style.width = "18rem"
+    cardDiv.setAttribute("class", "card bg-dark text-white")
+    // cardDiv.style.height = "20vh"
     const img = document.createElement('img')
     const url = getlist[i].images[0].url
     img.setAttribute('src', url)
-    img.setAttribute('class', 'card-img-top')
+    img.setAttribute('class', 'card-img')
     const cardBodyDiv = document.createElement('div')
-    cardBodyDiv.setAttribute('class', 'card-body')
+    cardBodyDiv.setAttribute('class', 'card-img-overlay')
     const cardTitle = document.createElement('h5')
     cardTitle.setAttribute('class', 'card-title')
     cardTitle.textContent = getlist[i].fullName
     // const cardContent = document.createElement('p')
     // cardContent.setAttribute('class', 'card-text')
     // cardContent.textContent = "paragraph"
-    const button = document.createElement('button')
-    button.setAttribute('class', 'btn btn-primary')
-    button.textContent = "Let's Go"
-    button.setAttribute('id', getlist[i].parkCode)
+    cardDiv.setAttribute('id', getlist[i].parkCode)
 
     cardSection.append(cardDiv)
     cardDiv.append(img, cardBodyDiv)
-    cardBodyDiv.append(cardTitle, button)
-
-    button.addEventListener("click", getPark)
+    cardBodyDiv.append(cardTitle)
+    cardDiv.addEventListener("click", getPark)
 
   }
     function getPark() {
