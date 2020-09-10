@@ -1,10 +1,10 @@
 
 const searchButton = document.getElementById("searchButton")
-// const frontPage = document.getElementById('frontPage')
+const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
-const cardSection = document.querySelector("div.cardSection")
+const cardSection = document.querySelector("section.cardSection")
 const currentWeather = document.getElementById('currentWeather')
 const maxWeather = document.getElementById('maxWeather')
 const minWeather = document.getElementById('minWeather')
@@ -87,7 +87,7 @@ function getList(parks) {
   }
     function getPark() {
     cardSection.className +=" display"
-    console.log("this is the Park id: " +this.id)
+    // console.log("this is the Park id: " +this.id)
     var parkId = this.id
     //console.log(parkId)
     getActivities(parkId)

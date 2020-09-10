@@ -5,20 +5,30 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  backdrop-filter: blur(3px);
 
 }
 .main{
 display: flex;
+justify-content: center;
+flex-wrap: wrap;
 
 }
 .bg-text{
   color:whitesmoke;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  /* position: absolute;
   top: 50%;
   left: 50%;
+  border: 2px solid navajowhite;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 2; */
   text-align: center;
+  backdrop-filter: blur(2px);
 }
 
 .loader {
@@ -161,12 +171,11 @@ padding:5rem;
 
 }
 .card-img {
+  width: 600px;
   height: 300px;
-  width:600px;
-
 }
 .card{
-  margin: 10px;
+  margin: 3px;
   cursor: pointer;
  color:whitesmoke;
  border: none;
