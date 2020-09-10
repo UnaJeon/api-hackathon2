@@ -1,10 +1,10 @@
 
 const searchButton = document.getElementById("searchButton")
-const frontPage = document.getElementById('frontPage')
+// const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
-const cardSection = document.querySelector("section.cardSection")
+const cardSection = document.querySelector("div.cardSection")
 const currentWeather = document.getElementById('currentWeather')
 const maxWeather = document.getElementById('maxWeather')
 const minWeather = document.getElementById('minWeather')
@@ -23,12 +23,10 @@ const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
 const table= document.querySelector('table')
 const sevenDayWeather = document.getElementById("sevenDayWeather")
-$('.loading-text').hide()
+$('.loader').hide()
 
 function addLoading(){
-  $('.loading-text').show()
-  $('.main').hide()
-  $('.bg-text').hide()
+  $('.loader').show()
   getParkList()
 }
 function getParkList(){
@@ -38,7 +36,7 @@ function getParkList(){
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
     success: parks => {
-      $('.loading-text').hide()
+      $('.loader').hide()
       getList(parks)
     },
     error: error => {
@@ -46,20 +44,20 @@ function getParkList(){
     }
   })
 }
-const postcard = document.getElementById("loading-postcards")
-const cards = ["npr-postcards-1.jpg", "npr-postcards-2.jpg", "npr-postcards-3.jpg", "npr-postcards-4.jpg", "npr-postcards-.jpg", "npr-postcards-6.jpg"]
-function showPostcards(){
-  if ($('.loading-text').show()){
-    for(let i=0; i<cards.length; i++){
-      postcard.setAttribute('src', 'images/' +cards[i])
-    }
-  } else if ($('.loading-text').hide()) {
-    clearInterval(intervalId)
-  }
-}
-const intervalId =setInterval(showPostcards,1000)
+// const postcard = document.getElementById("loading-postcards")
+// const cards = ["npr-postcards-1.jpg", "npr-postcards-2.jpg", "npr-postcards-3.jpg", "npr-postcards-4.jpg", "npr-postcards-.jpg", "npr-postcards-6.jpg"]
+// function showPostcards(){
+//   if ($('.loading-text').show()){
+//     for(let i=0; i<cards.length; i++){
+//       postcard.setAttribute('src', 'images/' +cards[i])
+//     }
+//   } else if ($('.loading-text').hide()) {
+//     clearInterval(intervalId)
+//   }
+// }
+// const intervalId =setInterval(showPostcards,1000)
 function getList(parks) {
-  frontPage.setAttribute("class", "display")
+  // frontPage.setAttribute("class", "display")
   var getlist = parks.data
   //tableBody.textContent = ''
 
