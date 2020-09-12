@@ -64,7 +64,6 @@ function getList(parks) {
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
     cardDiv.setAttribute("class", "card bg-dark text-white")
-    // cardDiv.style.height = "20vh"
     const img = document.createElement('img')
     const url = getlist[i].images[0].url
     img.setAttribute('src', url)
@@ -74,9 +73,6 @@ function getList(parks) {
     const cardTitle = document.createElement('h5')
     cardTitle.setAttribute('class', 'card-title')
     cardTitle.textContent = getlist[i].fullName
-    // const cardContent = document.createElement('p')
-    // cardContent.setAttribute('class', 'card-text')
-    // cardContent.textContent = "paragraph"
     cardDiv.setAttribute('id', getlist[i].parkCode)
 
     cardSection.append(cardDiv)
@@ -85,13 +81,14 @@ function getList(parks) {
     cardDiv.addEventListener("click", getPark)
 
   }
-    function getPark() {
-    cardSection.className +=" display"
+
+function getPark() {
+  cardSection.className +=" display"
     // console.log("this is the Park id: " +this.id)
-    var parkId = this.id
+  var parkId = this.id
     //console.log(parkId)
-    getActivities(parkId)
-    }
+  getActivities(parkId)
+   }
   }
 function getActivities(parkIdParameter){
   const letsGoButton = parkIdParameter
@@ -110,7 +107,7 @@ function getActivities(parkIdParameter){
   }
 
  function getListOfActivities(parks){
-   console.log(parks.data)
+  //  console.log(parks.data)
    const activities = parks.data[0].activities
    const description = parks.data[0].description
    const cityName = parks.data[0].addresses[0].city
@@ -126,7 +123,7 @@ function getActivities(parkIdParameter){
    paragraph.setAttribute("id", cityName)
 
    const ulList = document.createElement('ul')
-   box.append(imgBox, contentBox)
+   box.append(contentBox)
    contentBox.append(paragraph)
 
    imgBox.append(parkImage)
@@ -183,11 +180,11 @@ function renderCurrentWeather(data){
 
 }
 
-sevenDays.addEventListener('click', showTable)
+// sevenDays.addEventListener('click', showTable)
 
-function showTable(){
-  table.classList.toggle('display')
-}
+// function showTable(){
+//   table.classList.toggle('display')
+// }
 function getSevenDayWeather(lat,long){
 
   $.ajax({
