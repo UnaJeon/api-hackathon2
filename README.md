@@ -19,3 +19,11 @@ A mobile responsive web application for users who want to find national parks ar
 4. Brief informations and current weather as well as seven days forecast of that park is displayed.
 
 ## Preview
+
+
+## Getting Started
+1. Clone the repository.
+    ```shell
+    git clone https://github.com/unajeon/national-parks-and-weather-finder
+    cd national-parks-and-weather-fidner
+    ```
