@@ -1,8 +1,9 @@
 
 const searchButton = document.getElementById("searchButton")
+const inputField = document.getElementById("inputField")
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
-
+// const tableBody = document.querySelector('tbody')
 const cardSection = document.querySelector("section.cardSection")
 const currentWeather = document.getElementById('currentWeather')
 const maxWeather = document.getElementById('maxWeather')
@@ -15,7 +16,6 @@ const contentBox = document.getElementById('contentBox')
 const imgBox = document.getElementById('imgBox')
 const parkPage = document.getElementById('parkPage')
 // const parkInfo= document.getElementById('parkInfo')
-
 const nameOfCity = document.getElementById('nameOfCity')
 const moreInfo = document.getElementById('moreInfo')
 const activTitle = document.getElementById('activTitle')
@@ -29,7 +29,6 @@ function addLoading(){
   getParkList()
 }
 function getParkList(){
-  const inputField = document.getElementById("inputField")
   const state = inputField.value;
   $.ajax({
     method: "GET",
@@ -42,11 +41,12 @@ function getParkList(){
       console.log(error)
     }
   })
+  removeParkList();
 }
 function getList(parks) {
   // frontPage.setAttribute("class", "display")
   var getlist = parks.data
-  //tableBody.textContent = ''
+  // tableBody.textContent = ''
 
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
@@ -128,7 +128,11 @@ function getActivities(parkIdParameter){
 
    }
 }
-
+function removeParkList(){
+  while(cardSection.firstElementChild){
+    cardSection.firstElementChild.remove()
+  }
+}
 
 function getWeather() {
   const getCityName = document.getElementsByClassName("city")[0].id
