@@ -13,7 +13,7 @@ body{
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
-  backdrop-filter: blur(3px);
+backdrop-filter: blur(3px);
 
 }
 
@@ -71,11 +71,14 @@ align-items: center;
   width: 100%;
   padding:2rem;
   backdrop-filter: blur(3px);
-
+  padding: 2rem;
+  margin: 2rem;
 }
 .top-container{
   width:100%;
   display: flex;
+  border: 2px solid white;
+
 }
 .box{
   display: flex;
@@ -137,19 +140,21 @@ h3{
   margin-top: 0.8rem;
 }
 
-table{
+.table{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-top: 16px;
-  color:wheat;
+  color:black;
   font-family: 'Lato', sans-serif;
   background-color: wheat;
 }
+
 thead, tbody{
   width:100%;
+  justify-content: center;
 }
 @font-face {
     font-family: 'orkneylight';
@@ -180,7 +185,9 @@ padding:5rem;
   color:whitesmoke;
   border: none;
 }
-
+/* .sevendaytable{
+  display: grid;
+} */
 .display{
   display: none;
 }

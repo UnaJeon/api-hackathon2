@@ -1,6 +1,5 @@
 
 const searchButton = document.getElementById("searchButton")
-const frontPage = document.getElementById('frontPage')
 searchButton.addEventListener('click',addLoading)
 const aboutParkName = document.getElementById('parkName')
 
@@ -44,18 +43,6 @@ function getParkList(){
     }
   })
 }
-// const postcard = document.getElementById("loading-postcards")
-// const cards = ["npr-postcards-1.jpg", "npr-postcards-2.jpg", "npr-postcards-3.jpg", "npr-postcards-4.jpg", "npr-postcards-.jpg", "npr-postcards-6.jpg"]
-// function showPostcards(){
-//   if ($('.loading-text').show()){
-//     for(let i=0; i<cards.length; i++){
-//       postcard.setAttribute('src', 'images/' +cards[i])
-//     }
-//   } else if ($('.loading-text').hide()) {
-//     clearInterval(intervalId)
-//   }
-// }
-// const intervalId =setInterval(showPostcards,1000)
 function getList(parks) {
   // frontPage.setAttribute("class", "display")
   var getlist = parks.data
