@@ -34,17 +34,19 @@ function checkStatecode() {
   const pElement = document.createElement("p")
   pElement.setAttribute("id", "pElement")
   const modalButton = document.createElement("button")
+  modalButton.setAttribute("class","btn btn-primary")
   modalButton.textContent = "Close"
   modalSecondDiv.append(pElement, modalButton)
   modalDiv.append(modalSecondDiv)
   modal.append(modalDiv)
+  modalButton.addEventListener("click",closeModal)
 
   const stateCode = ["wa", "or", "ca", "nv", "ak", "az", "nm", "tx", "ut", "co", "wy", "id", "mt", "wy", "nd", "sd", "mn", "mi", "il", "mo", "ar", "tn", "hy", "oh", "in", "va", "nc", "sc", "fl", "me", "as", "hi", "vi"]
   for (let i = 0; i < stateCode.length; i++) {
     if (!inputField.value) {
-      pElement.textContent = "Please fill in the search box"
+      pElement.textContent = "Input box needs to be filled"
     } else if (inputField.value !==stateCode[i]) {
-      pElement.textContent = "please write correct state code"
+      pElement.textContent = "Please write correct state code"
     }else{
       modal.setAttribute("class","display")
       $('.loader').show()
@@ -58,6 +60,9 @@ function checkStatecode() {
 //   $('.loader').show()
 //   // getParkList()
 // }
+function closeModal(){
+  modal.setAttribute("class", "display")
+}
 function getParkList(){
   const state = inputField.value;
   if(!state){

@@ -52,17 +52,19 @@ backdrop-filter: blur(3px);
   background-color: whitesmoke;
   border: 5px solid wheat;
   width: 30%;
+
 }
 .modal-content>p{
   text-align: center;
+  margin-top: 10px;
 }
-/* .modal-content>button{
-  display:flex;
-  justify-content: end;
-}
-.modal-button{
+.modal-content>button{
+width:20%;
+align-self: center;
+margin-bottom: 10px;
 
-} */
+}
+
 .table{
   width:70%;
   font-size: 1rem;
@@ -115,10 +117,6 @@ backdrop-filter: blur(3px);
  {
   font-size: 30px;
   }
-/* .top-container{
-  display: flex;
-  width: 100%;
-} */
 h3{
   font-family: 'Lato';
   font-weight: bold;
@@ -134,10 +132,6 @@ h3{
   border-radius: 2%;
   text-align: center;
 }
-/* .imgbox{
-  display: flex;
-  justify-content: center;
-} */
 .activities{
   margin-top: 0.8rem;
 }
@@ -187,9 +181,7 @@ padding:5rem;
   color:whitesmoke;
   border: none;
 }
-/* .sevendaytable{
-  display: grid;
-} */
+
 .display{
   display: none;
 }
