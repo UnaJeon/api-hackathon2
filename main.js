@@ -1,7 +1,6 @@
-
 const searchButton = document.getElementById("searchButton")
 const inputField = document.getElementById("inputField")
-searchButton.addEventListener('click',addLoading)
+searchButton.addEventListener('click',checkStatecode)
 const aboutParkName = document.getElementById('parkName')
 // const tableBody = document.querySelector('tbody')
 const cardSection = document.querySelector("section.cardSection")
@@ -20,16 +19,50 @@ const nameOfCity = document.getElementById('nameOfCity')
 const moreInfo = document.getElementById('moreInfo')
 const activTitle = document.getElementById('activTitle')
 const linkToUrl = document.getElementById('linkToUrl')
-const table= document.querySelector('table')
+// const table= document.querySelector('table')
 const sevenDayWeather = document.getElementById("sevenDayWeather")
+const modal = document.getElementById('modal')
+
 $('.loader').hide()
 
-function addLoading(){
-  $('.loader').show()
-  getParkList()
+
+function checkStatecode() {
+  const modalDiv = document.createElement("div")
+  modalDiv.setAttribute("class", "modal-overlay")
+  const modalSecondDiv = document.createElement("div")
+  modalSecondDiv.setAttribute("class", "modal-content")
+  const pElement = document.createElement("p")
+  pElement.setAttribute("id", "pElement")
+  const modalButton = document.createElement("button")
+  modalButton.textContent = "Close"
+  modalSecondDiv.append(pElement, modalButton)
+  modalDiv.append(modalSecondDiv)
+  modal.append(modalDiv)
+
+  const stateCode = ["wa", "or", "ca", "nv", "ak", "az", "nm", "tx", "ut", "co", "wy", "id", "mt", "wy", "nd", "sd", "mn", "mi", "il", "mo", "ar", "tn", "hy", "oh", "in", "va", "nc", "sc", "fl", "me", "as", "hi", "vi"]
+  for (let i = 0; i < stateCode.length; i++) {
+    if (!inputField.value) {
+      pElement.textContent = "Please fill in the search box"
+    } else if (inputField.value !==stateCode[i]) {
+      pElement.textContent = "please write correct state code"
+    }else{
+      modal.setAttribute("class","display")
+      $('.loader').show()
+      getParkList()
+    }
+  }
 }
+
+// function addLoading(){
+//   checkStatecode()
+//   $('.loader').show()
+//   // getParkList()
+// }
 function getParkList(){
   const state = inputField.value;
+  if(!state){
+    checkStatecode()
+  }
   $.ajax({
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
@@ -44,9 +77,7 @@ function getParkList(){
   removeParkList();
 }
 function getList(parks) {
-  // frontPage.setAttribute("class", "display")
   var getlist = parks.data
-  // tableBody.textContent = ''
 
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
