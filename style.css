@@ -7,10 +7,10 @@ body{
   background-attachment: fixed;
 }
 .main{
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  backdrop-filter: blur(3px);
 
 }
 
@@ -65,41 +65,36 @@ margin-bottom: 10px;
 
 }
 
-.table{
-  width:70%;
-  font-size: 1rem;
-  margin: 3rem auto;
-  padding: 2rem;
-}
-.park_Page{
-  width: 100%;
+.parkPage{
   padding:2rem;
-  backdrop-filter: blur(3px);
-  padding: 2rem;
-  margin: 2rem;
 }
+
+.rowDiv2{
+  display:flex;
+  justify-content: center;
+}
+
 .top-container{
   width:100%;
   display: flex;
   border: 2px solid white;
-
+  align-items: center;
 }
-.box{
+
+.imgbox{
   display: flex;
-  /* justify-content: center;
-  flex-basis: 80%; */
   margin: auto;
   width: 100%;
-  align-items: center;
+  justify-content: center;
+  margin-left:0.5rem;
 }
 .contentBox{
   font-size: 1.2rem;
   font-family: 'Lato';
-  margin-left: 5px;
+  margin:0.5rem;
+  align-self: center;
 }
-.weatherContainer{
- flex-basis: 20%;
-}
+
 .weather{
   display: flex;
   flex-flow: column wrap;
@@ -110,7 +105,7 @@ margin-bottom: 10px;
   background-color: tan;
   padding: 10px;
   margin: 0 auto;
-  width:80%;
+  width:100%;
  }
 
 .temp
@@ -146,11 +141,7 @@ h3{
   color:black;
   font-family: 'Lato', sans-serif;
   background-color: wheat;
-}
 
-thead, tbody{
-  width:100%;
-  justify-content: center;
 }
 @font-face {
     font-family: 'orkneylight';
