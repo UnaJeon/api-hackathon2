@@ -5,6 +5,8 @@ const cardSection = document.querySelector("section.cardSection")
 const parkPage = document.getElementById('parkPage')
 const modal = document.getElementById('modal')
 
+
+
 $('.loader').hide()
 
 function checkStatecode() {
@@ -107,79 +109,91 @@ function getActivities(parkIdParam){
   }
 
 function getParkInfo(parks){
-  const description = parks.data[0].description
-  const cityName = parks.data[0].addresses[0].city
-  const getParkImg = parks.data[0].images[1].url
-  const parkName = parks.data[0].fullName
-  const parkNameTitle = document.createElement('h3')
-  parkNameTitle.textContent = parkName
-  const topContainerDiv = document.createElement("div")
-  topContainerDiv.setAttribute("id", "top-container")
-  topContainerDiv.setAttribute("class", "top-container m-2")
-  const imgbox = document.createElement("div")
-  imgbox.setAttribute("class", "imgbox")
-  const contentBox = document.createElement('div')
-  contentBox.setAttribute("class", "contentBox")
-  const paragraph = document.createElement('p')
-  const parkImage = document.createElement('img')
-  parkImage.setAttribute('src', getParkImg)
-  parkImage.setAttribute('class', 'parkImage')
-  paragraph.textContent = description
-  paragraph.setAttribute("class", "city")
-  paragraph.setAttribute("id", cityName)
-  const weather = document.createElement('div')
-  weather.setAttribute("class", "weather")
-  const cityDiv = document.createElement("div")
-  cityDiv.setAttribute("id", "nameOfCity")
-  const tempDiv = document.createElement('div')
-  tempDiv.setAttribute("class", "temp")
-  tempDiv.setAttribute("id", "currentWeather")
-  const weatherIconDiv = document.createElement('div')
-  weatherIconDiv.setAttribute('id', "forecastImg")
-  const maxDiv = document.createElement("div")
-  const minDiv = document.createElement("div")
-  maxDiv.setAttribute("id", "maxWeather")
-  minDiv.setAttribute("id", "minWeather")
-  const moreInfoP = document.createElement('p')
-  moreInfoP.textContent = "Visit Website for More Info: "
-  const link = document.createElement("a")
-  link.setAttribute("target", "_blank")
-  link.setAttribute("href", parks.data[0].url)
-  link.textContent = parks.data[0].url
-  const rowDiv = document.createElement('div')
-  rowDiv.setAttribute('class', 'rowDiv')
-  moreInfoP.append(link)
-  weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
-  imgbox.append(parkImage)
-  topContainerDiv.append(imgbox, contentBox,weather)
-  contentBox.append(paragraph)
-  rowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
-  parkPage.append(rowDiv)
-  getWeather()
+  const selectRowDiv = document.getElementById('rowDiv')
+    const description = parks.data[0].description
+    const cityName = parks.data[0].addresses[0].city
+    const getParkImg = parks.data[0].images[1].url
+    const parkName = parks.data[0].fullName
+    const parkNameTitle = document.createElement('h3')
+    parkNameTitle.textContent = parkName
+    const topContainerDiv = document.createElement("div")
+    topContainerDiv.setAttribute("id", "top-container")
+    topContainerDiv.setAttribute("class", "top-container m-2")
+    const imgbox = document.createElement("div")
+    imgbox.setAttribute("class", "imgbox")
+    const contentBox = document.createElement('div')
+    contentBox.setAttribute("class", "contentBox")
+    const paragraph = document.createElement('p')
+    const parkImage = document.createElement('img')
+    parkImage.setAttribute('src', getParkImg)
+    parkImage.setAttribute('class', 'parkImage')
+    paragraph.textContent = description
+    paragraph.setAttribute("class", "city")
+    paragraph.setAttribute("id", cityName)
+    const weather = document.createElement('div')
+    weather.setAttribute("class", "weather")
+    const cityDiv = document.createElement("div")
+    cityDiv.setAttribute("id", "nameOfCity")
+    const tempDiv = document.createElement('div')
+    tempDiv.setAttribute("class", "temp")
+    tempDiv.setAttribute("id", "currentWeather")
+    const weatherIconDiv = document.createElement('div')
+    weatherIconDiv.setAttribute('id', "forecastImg")
+    const maxDiv = document.createElement("div")
+    const minDiv = document.createElement("div")
+    maxDiv.setAttribute("id", "maxWeather")
+    minDiv.setAttribute("id", "minWeather")
+    const moreInfoP = document.createElement('p')
+    moreInfoP.textContent = "Visit Website for More Info: "
+    const link = document.createElement("a")
+    link.setAttribute("target", "_blank")
+    link.setAttribute("href", parks.data[0].url)
+    link.textContent = parks.data[0].url
+
+    moreInfoP.append(link)
+    weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
+    imgbox.append(parkImage)
+    topContainerDiv.append(imgbox, contentBox, weather)
+    contentBox.append(paragraph)
+    selectRowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
+    parkPage.append(selectRowDiv)
+    getWeather()
+  // if (!selectRowDiv.firstElementChild) {
+  //   return
+  // }else if(rowDiv.firstElementChild){
+  //   // removeParkInfo(rowDiv)
+  // }
+
 }
 
  function getListOfActivities(parks){
   //  console.log(parks.data)
-   const activities = parks.data[0].activities
-   //console.log(activities)
-   const rowDiv2 = document.createElement("div")
-   rowDiv2.setAttribute('id','rowDiv2')
-   rowDiv2.setAttribute('class','rowDiv2')
-   const activitiesDiv = document.createElement('div')
-   activitiesDiv.setAttribute("class", "activities col-5")
-   activitiesDiv.setAttribute("id", "activities")
-   const activityTitle = document.createElement('h4')
-   activityTitle.textContent = "Activitied You Can Do..."
-   activitiesDiv.append(activityTitle)
-   const ulList = document.createElement('ul')
-   activityTitle.append(ulList)
-   for (let i = 0; i < activities.length; i++) {
-     const list = document.createElement('li')
-     list.textContent = parks.data[0].activities[i].name
-     ulList.append(list)
-   }
-   parkPage.append(rowDiv2)
-   rowDiv2.append(activitiesDiv)
+    //    const rowDiv2 = document.createElement("div")
+    //  rowDiv2.setAttribute('id','rowDiv2')
+    //  rowDiv2.setAttribute('class','rowDiv2')
+   const selectRowDiv2 = document.getElementById('rowDiv2')
+  // if(!selectRowDiv2.firstElementChild){
+    const activities = parks.data[0].activities
+    //console.log(activities)
+
+    const activitiesDiv = document.createElement('div')
+    activitiesDiv.setAttribute("class", "activities col-5")
+    activitiesDiv.setAttribute("id", "activities")
+    const activityTitle = document.createElement('h4')
+    activityTitle.textContent = "Activitied You Can Do..."
+    activitiesDiv.append(activityTitle)
+    const ulList = document.createElement('ul')
+    activityTitle.append(ulList)
+    for (let i = 0; i < activities.length; i++) {
+      const list = document.createElement('li')
+      list.textContent = parks.data[0].activities[i].name
+      ulList.append(list)
+    }
+    parkPage.append(selectRowDiv2)
+    selectRowDiv2.append(activitiesDiv)
+  // }else if(rowDiv2.firstElementChild){
+  //   removeActivities(rowDiv2)
+  // }
 
 }
 
@@ -296,3 +310,10 @@ function removeParkList() {
     cardSection.firstElementChild.remove()
   }
 }
+
+// function removeParkInfo(element){
+// element.firstElementChid.remove()
+// }
+// function removeActivities(element){
+//   element.remove()
+// }
