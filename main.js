@@ -158,21 +158,11 @@ function getParkInfo(parks){
     selectRowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
     parkPage.append(selectRowDiv)
     getWeather()
-  // if (!selectRowDiv.firstElementChild) {
-  //   return
-  // }else if(rowDiv.firstElementChild){
-  //   // removeParkInfo(rowDiv)
-  // }
-
 }
 
  function getListOfActivities(parks){
   //  console.log(parks.data)
-    //    const rowDiv2 = document.createElement("div")
-    //  rowDiv2.setAttribute('id','rowDiv2')
-    //  rowDiv2.setAttribute('class','rowDiv2')
    const selectRowDiv2 = document.getElementById('rowDiv2')
-  // if(!selectRowDiv2.firstElementChild){
     const activities = parks.data[0].activities
     //console.log(activities)
 
@@ -191,9 +181,6 @@ function getParkInfo(parks){
     }
     parkPage.append(selectRowDiv2)
     selectRowDiv2.append(activitiesDiv)
-  // }else if(rowDiv2.firstElementChild){
-  //   removeActivities(rowDiv2)
-  // }
 
 }
 
