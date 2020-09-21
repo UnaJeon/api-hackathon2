@@ -88,6 +88,7 @@ function getPark() {
     // console.log("this is the Park id: " +this.id)
     var parkId = this.id
     getActivities(parkId)
+  removeParkInfo()
    }
   }
 
@@ -293,14 +294,18 @@ function renderSevenDayWeather(data){
 }
 
 function removeParkList() {
-  while (cardSection.firstElementChild) {
+  while (cardSection .firstElementChild) {
     cardSection.firstElementChild.remove()
   }
 }
 
-// function removeParkInfo(element){
-// element.firstElementChid.remove()
-// }
-// function removeActivities(element){
-//   element.remove()
-// }
+function removeParkInfo(){
+let rowDiv = document.getElementById("rowDiv")
+while(rowDiv.firstChild){
+rowDiv.removeChild(rowDiv.lastChild)
+}
+let rowDiv2 = document.getElementById("rowDiv2")
+while(rowDiv2.firstChild){
+  rowDiv2.removeChild(rowDiv2.lastChild)
+}
+}
