@@ -113,7 +113,7 @@ function getParkInfo(parks){
   const selectRowDiv = document.getElementById('rowDiv')
     const description = parks.data[0].description
     const cityName = parks.data[0].addresses[0].city
-    const getParkImg = parks.data[0].images[1].url
+    const getParkImg = parks.data[0].images[0].url
     const parkName = parks.data[0].fullName
     const parkNameTitle = document.createElement('h3')
     parkNameTitle.textContent = parkName

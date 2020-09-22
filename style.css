@@ -66,19 +66,25 @@ margin-bottom: 10px;
 
 }
 
-.parkPage{
-  padding:2rem;
-}
+/* .parkPage{
+
+} */
 
 .rowDiv2{
   display:flex;
   justify-content: center;
 }
-
+.parkPage{
+  background-color:wheat;
+  opacity: 0.8;
+  margin: 2rem;
+  padding:2rem;
+}
 .top-container{
   width:100%;
   display: flex;
   align-items: center;
+
 }
 
 .imgbox{
@@ -127,10 +133,13 @@ h3{
   border-radius: 2%;
   text-align: center;
 }
-.activities{
-  margin-top: 0.8rem;
-}
 
+li{
+    margin-top: 0.8rem;
+  font-size: 1.2rem;
+  font-family: 'Lato';
+
+}
 .table{
   display: flex;
   flex-direction: column;
@@ -160,6 +169,7 @@ padding:5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
 
 }
 .card-img {
