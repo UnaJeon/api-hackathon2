@@ -6,15 +6,14 @@ body{
   background-attachment: fixed;
 }
 .main{
-
   backdrop-filter: blur(3px);
-
 }
 input{
-  width:30%;
+  width:auto;
 }
 .bg-text{
   color:whitesmoke;
+  font-family: 'Lato';
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +50,8 @@ input{
 .modal-content{
   background-color: whitesmoke;
   border: 5px solid wheat;
-  width: 20%;
+  width: auto;
+  margin: auto;
 
 }
 .modal-content>p{
@@ -91,7 +91,7 @@ margin-bottom: 10px;
   width: 100%;
   background-color:wheat;
   opacity: 0.8;
-  padding:2rem;
+
 }
 .top-container{
   width:100%;
@@ -100,7 +100,10 @@ margin-bottom: 10px;
   flex-wrap: wrap;
 
 }
-
+.imgbox{
+  display:flex;
+  justify-content: center;
+}
 .contentBox{
   font-size: 1.2rem;
   font-family: 'Lato';
@@ -134,12 +137,11 @@ h3{
   margin: 2rem;
 }
 .parkImage{
-   width: auto ;
+  width: auto ;
   max-width: 100% ;
   height: auto ;
   margin: auto;
   border-radius: 2%;
-  text-align: center;
 }
 
 li{
