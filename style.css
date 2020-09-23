@@ -5,9 +5,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.main{
-  backdrop-filter: blur(3px);
-}
+
 input{
   width:auto;
 }
@@ -18,7 +16,6 @@ input{
   flex-direction: column;
   align-items: center;
   text-align: center;
-  backdrop-filter: blur(2px);
   width: 100%;
 }
 
