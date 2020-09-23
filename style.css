@@ -1,15 +1,12 @@
 body{
   width:100%;
-  /* height: 200vh; */
   background-image: url(images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .main{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
   backdrop-filter: blur(3px);
 
 }
@@ -62,7 +59,6 @@ input{
   margin-top: 10px;
 }
 .modal-content>button{
-
 align-self: center;
 margin-bottom: 10px;
 
@@ -88,29 +84,23 @@ margin-bottom: 10px;
 }
 .rowDiv2{
   display:flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .parkPage{
   width: 100%;
   background-color:wheat;
   opacity: 0.8;
-  margin: 2rem;
   padding:2rem;
 }
 .top-container{
   width:100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
 }
 
-.imgbox{
-  display: flex;
-  margin: auto;
-  width: 100%;
-  justify-content: center;
-  margin-left:0.5rem;
-}
 .contentBox{
   font-size: 1.2rem;
   font-family: 'Lato';
@@ -127,8 +117,8 @@ margin-bottom: 10px;
   color: black;
   background-color: tan;
   padding: 10px;
-  margin: 0 auto;
-  width:100%;
+  margin: 1rem auto;
+  width:50%;
  }
 
 .temp{
@@ -144,9 +134,10 @@ h3{
   margin: 2rem;
 }
 .parkImage{
-  height:250px;
-  width: 400px;
-
+   width: auto ;
+  max-width: 100% ;
+  height: auto ;
+  margin: auto;
   border-radius: 2%;
   text-align: center;
 }
@@ -155,8 +146,8 @@ li{
     margin-top: 0.8rem;
   font-size: 1.2rem;
   font-family: 'Lato';
-
 }
+
 .table{
   display: flex;
   flex-direction: column;
@@ -167,8 +158,8 @@ li{
   color:black;
   font-family: 'Lato', sans-serif;
   background-color: wheat;
-
 }
+
 @font-face {
     font-family: 'orkneylight';
     src: url('fonts/orkney_light-webfont.woff') format('woff'),
@@ -181,7 +172,6 @@ li{
 .weather_table{
 padding:5rem;
 }
-
 
 .display{
   display: none;

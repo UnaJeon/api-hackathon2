@@ -154,7 +154,7 @@ function getParkInfo(parks){
     moreInfoP.append(link)
     weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
     imgbox.append(parkImage)
-    topContainerDiv.append(imgbox, contentBox, weather)
+    topContainerDiv.append(weather,imgbox, contentBox)
     contentBox.append(paragraph)
     selectRowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
     parkPage.append(selectRowDiv)
@@ -168,7 +168,7 @@ function getParkInfo(parks){
     //console.log(activities)
 
     const activitiesDiv = document.createElement('div')
-    activitiesDiv.setAttribute("class", "activities col-5")
+    activitiesDiv.setAttribute("class", "activities d-flex")
     activitiesDiv.setAttribute("id", "activities")
     const activityTitle = document.createElement('h4')
     activityTitle.textContent = "Activitied You Can Do..."
@@ -246,7 +246,7 @@ function renderSevenDayWeather(data){
   const sevenDaysTable = document.createElement("div")
   sevenDaysTable.setAttribute("class", "sevenDayTable d-flex")
   const weatherTable = document.createElement("table")
-  weatherTable.setAttribute("class", "table col-6")
+  weatherTable.setAttribute("class", "table")
   const thead = document.createElement('thead')
   const tr = document.createElement("tr")
   const dayth = document.createElement("th")
