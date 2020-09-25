@@ -91,7 +91,7 @@ margin-bottom: 10px;
   width: 100%;
   background-color:wheat;
   opacity: 0.8;
-
+  margin-top: 2rem;
 }
 .top-container{
   width:100%;
@@ -132,13 +132,11 @@ h3{
   font-style: normal;
   font-size: 2rem;
   text-align: center;
-  margin: 2rem;
 }
 .parkImage{
   width: auto ;
   max-width: 100% ;
   height: auto ;
-  margin: auto;
   border-radius: 2%;
 }
 
@@ -188,6 +186,9 @@ padding:5rem;
     h5{
       font-size: 0.5rem;
     }
+    h3{
+      font-size: 1.5rem;
+    }
 }
 
 @media only screen
@@ -200,6 +201,9 @@ padding:5rem;
     }
     h5{
       font-size: 0.5rem;
+    }
+    h3{
+      font-size: 1.5rem;
     }
 }
 
@@ -214,6 +218,9 @@ padding:5rem;
     h5{
       font-size: 0.8rem;
     }
+    h3{
+      font-size: 1.8rem;
+    }
 }
 
 /* Landscape */
@@ -227,5 +234,8 @@ padding:5rem;
     }
     h5{
       font-size: 0.8rem;
+    }
+    h3{
+      font-size: 1.8rem;
     }
 }
