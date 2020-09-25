@@ -127,10 +127,11 @@ function getParkInfo(parks){
     const getParkImg = parks.data[0].images[0].url
     const parkName = parks.data[0].fullName
     const parkNameTitle = document.createElement('h3')
+    parkNameTitle.setAttribute("class","parkTitle pt-4")
     parkNameTitle.textContent = parkName
     const topContainerDiv = document.createElement("div")
     topContainerDiv.setAttribute("id", "top-container")
-    topContainerDiv.setAttribute("class", "top-container m-2")
+    topContainerDiv.setAttribute("class", "top-container")
     const imgbox = document.createElement("div")
     imgbox.setAttribute("class", "imgbox")
     const contentBox = document.createElement('div')
@@ -182,7 +183,7 @@ function getParkInfo(parks){
     activitiesDiv.setAttribute("class", "activities d-flex")
     activitiesDiv.setAttribute("id", "activities")
     const activityTitle = document.createElement('h4')
-    activityTitle.textContent = "Activitied You Can Do..."
+    activityTitle.textContent = "Activities You Can Do..."
     activitiesDiv.append(activityTitle)
     const ulList = document.createElement('ul')
     activityTitle.append(ulList)

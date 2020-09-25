@@ -98,12 +98,10 @@ margin-bottom: 10px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 
 }
-.imgbox{
-  display:flex;
-  justify-content: center;
-}
+
 .contentBox{
   font-size: 1.2rem;
   font-family: 'Lato';
@@ -184,7 +182,12 @@ padding:5rem;
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-
+    .card-img{
+      width: 250px;
+    }
+    h5{
+      font-size: 0.5rem;
+    }
 }
 
 @media only screen
@@ -192,7 +195,12 @@ padding:5rem;
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-
+    .card-img{
+      width: 200px;
+    }
+    h5{
+      font-size: 0.5rem;
+    }
 }
 
 @media only screen
@@ -200,7 +208,12 @@ padding:5rem;
   and (max-device-width: 1024px)
   and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 1) {
-
+    .card-img{
+      width: 300px;
+    }
+    h5{
+      font-size: 0.8rem;
+    }
 }
 
 /* Landscape */
@@ -209,5 +222,10 @@ padding:5rem;
   and (max-device-width: 1024px)
   and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 1) {
-
+    .card-img{
+      width: 300px;
+    }
+    h5{
+      font-size: 0.8rem;
+    }
 }
