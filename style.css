@@ -49,6 +49,7 @@ input{
   border: 5px solid wheat;
   width: auto;
   margin: auto;
+  padding:1rem;
 
 }
 .modal-content>p{
