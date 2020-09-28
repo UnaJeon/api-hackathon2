@@ -171,7 +171,10 @@ li{
 .weather_table{
 padding:5rem;
 }
-
+.error{
+  text-align: center;
+  padding-top: 1rem;
+}
 .display{
   display: none;
 }
