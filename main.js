@@ -27,9 +27,20 @@ function checkStatecode() {
   const stateCode = ["wa", "or", "ca", "nv", "ak", "az", "nm", "tx", "ut", "co", "wy", "id", "mt", "wy", "nd", "sd", "mn", "mi", "il", "mo", "ar", "tn", "hy", "oh", "in", "va", "nc", "sc", "fl", "me", "as", "hi", "vi"]
   for (let i = 0; i < stateCode.length; i++) {
     if (!inputField.value) {
-      pElement.textContent = "Please fill in the box"
+      const cardSection = document.getElementById("cardSection")
+      if(cardSection.firstChild){
+        removeParkList()
+        removeParkInfo()
+        pElement.textContent = "Please fill in the box"
+        modal.classList.remove('display')
+      }else{
+        pElement.textContent = "Please fill in the box"
+      }
     } else if (inputField.value !==stateCode[i]) {
+      removeParkList()
+      removeParkInfo()
       pElement.textContent = "Please write correct state code"
+      modal.classList.remove('display')
     }else{
       modal.setAttribute("class","display")
       $('.loader').show()
@@ -88,6 +99,7 @@ function getPark() {
     // console.log("this is the Park id: " +this.id)
     var parkId = this.id
     getActivities(parkId)
+  removeParkInfo()
    }
   }
 
@@ -112,13 +124,14 @@ function getParkInfo(parks){
   const selectRowDiv = document.getElementById('rowDiv')
     const description = parks.data[0].description
     const cityName = parks.data[0].addresses[0].city
-    const getParkImg = parks.data[0].images[1].url
+    const getParkImg = parks.data[0].images[0].url
     const parkName = parks.data[0].fullName
     const parkNameTitle = document.createElement('h3')
+    parkNameTitle.setAttribute("class","parkTitle pt-4")
     parkNameTitle.textContent = parkName
     const topContainerDiv = document.createElement("div")
     topContainerDiv.setAttribute("id", "top-container")
-    topContainerDiv.setAttribute("class", "top-container m-2")
+    topContainerDiv.setAttribute("class", "top-container")
     const imgbox = document.createElement("div")
     imgbox.setAttribute("class", "imgbox")
     const contentBox = document.createElement('div')
@@ -153,7 +166,7 @@ function getParkInfo(parks){
     moreInfoP.append(link)
     weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
     imgbox.append(parkImage)
-    topContainerDiv.append(imgbox, contentBox, weather)
+    topContainerDiv.append(weather,imgbox, contentBox)
     contentBox.append(paragraph)
     selectRowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
     parkPage.append(selectRowDiv)
@@ -167,10 +180,10 @@ function getParkInfo(parks){
     //console.log(activities)
 
     const activitiesDiv = document.createElement('div')
-    activitiesDiv.setAttribute("class", "activities col-5")
+    activitiesDiv.setAttribute("class", "activities d-flex")
     activitiesDiv.setAttribute("id", "activities")
     const activityTitle = document.createElement('h4')
-    activityTitle.textContent = "Activitied You Can Do..."
+    activityTitle.textContent = "Activities You Can Do..."
     activitiesDiv.append(activityTitle)
     const ulList = document.createElement('ul')
     activityTitle.append(ulList)
@@ -245,7 +258,7 @@ function renderSevenDayWeather(data){
   const sevenDaysTable = document.createElement("div")
   sevenDaysTable.setAttribute("class", "sevenDayTable d-flex")
   const weatherTable = document.createElement("table")
-  weatherTable.setAttribute("class", "table col-6")
+  weatherTable.setAttribute("class", "table")
   const thead = document.createElement('thead')
   const tr = document.createElement("tr")
   const dayth = document.createElement("th")
@@ -293,14 +306,18 @@ function renderSevenDayWeather(data){
 }
 
 function removeParkList() {
-  while (cardSection.firstElementChild) {
+  while (cardSection .firstElementChild) {
     cardSection.firstElementChild.remove()
   }
 }
 
-// function removeParkInfo(element){
-// element.firstElementChid.remove()
-// }
-// function removeActivities(element){
-//   element.remove()
-// }
+function removeParkInfo(){
+let rowDiv = document.getElementById("rowDiv")
+while(rowDiv.firstChild){
+rowDiv.removeChild(rowDiv.lastChild)
+}
+let rowDiv2 = document.getElementById("rowDiv2")
+while(rowDiv2.firstChild){
+  rowDiv2.removeChild(rowDiv2.lastChild)
+}
+}
