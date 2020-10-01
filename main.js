@@ -6,7 +6,7 @@ const parkPage = document.getElementById('parkPage')
 const modal = document.getElementById('modal')
 const loader = document.getElementById('loader')
 const rowDiv = document.getElementById('rowDiv')
-const selectRowDiv2 = document.getElementById('rowDiv2')
+const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
 function checkStatecode() {
@@ -190,8 +190,8 @@ function getParkInfo(parks){
       list.textContent = parks.data[0].activities[i].name
       ulList.append(list)
     }
-    parkPage.append(selectRowDiv2)
-    selectRowDiv2.append(activitiesDiv)
+    parkPage.append(rowDiv2)
+    rowDiv2.append(activitiesDiv)
 
 }
 
@@ -210,6 +210,7 @@ function getWeather() {
     error: error => {
       console.log(error)
       handleCurrentWeatherError()
+      handleErrorRenderSevenDayWeather()
     }
   })
 }
@@ -238,7 +239,6 @@ function renderCurrentWeather(data){
   weatherIcon.append(forecastRn)
   var latitude = data.coord.lat
   var longitude = data.coord.lon
-
   getSevenDayWeather(latitude, longitude)
 }
 
@@ -251,8 +251,18 @@ function getSevenDayWeather(lat,long){
     },
     error:error=>{
       console.log(error)
+      handleErrorRenderSevenDayWeather()
     }
   })
+}
+function handleErrorRenderSevenDayWeather(){
+  const sevenDaysTableError = document.createElement("div")
+  sevenDaysTableError.setAttribute("class", "sevenDayTableError")
+  const sevenDaypElement = document.createElement('h5')
+  sevenDaypElement.setAttribute("class", "p-4 m-3")
+  sevenDaypElement.textContent = "Could not retreive seven days weather for this area, please try again."
+  sevenDaysTableError.append(sevenDaypElement)
+  rowDiv2.append(sevenDaysTableError)
 }
 
 function renderSevenDayWeather(data){
@@ -278,7 +288,6 @@ function renderSevenDayWeather(data){
   thead.append(tr)
   weatherTable.append(thead,tbody)
   sevenDaysTable.append(weatherTable)
-  const rowDiv2 = document.getElementById('rowDiv2')
   rowDiv2.append(sevenDaysTable)
 
   for (let i=0;i<data.daily.length; i++){
