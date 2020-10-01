@@ -29,6 +29,6 @@ A mobile responsive web application for users who want to find national parks ar
     ```
 2. Navigate to the directory
     ```
-      cd national-parks-and-weather-fidner
+    cd national-parks-and-weather-fidner
     ```
-3. Open the application from `shell index.html` in code editor
+3. Open the application from `index.html` in code editor
