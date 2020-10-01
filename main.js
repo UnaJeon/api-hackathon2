@@ -209,8 +209,15 @@ function getWeather() {
     },
     error: error => {
       console.log(error)
+      handleCurrentWeatherError()
     }
   })
+}
+
+function handleCurrentWeatherError(){
+  parkPage.classList.remove("display")
+  const nameOfCity = document.getElementById('nameOfCity')
+  nameOfCity.textContent = "Could not retreive the weather, please try again."
 }
 
 function renderCurrentWeather(data){
