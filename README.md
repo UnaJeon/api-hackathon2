@@ -25,5 +25,8 @@ A mobile responsive web application for users who want to find national parks ar
 1. Clone the repository.
     ```shell
     git clone https://github.com/unajeon/national-parks-and-weather-finder
-    cd national-parks-and-weather-fidner
+    ```
+2. Navigate to the directory
+    ```shell
+      cd national-parks-and-weather-fidner
     ```
