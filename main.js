@@ -98,6 +98,10 @@ function getList(parks) {
 function getPark() {
     var parkId = this.id
     getActivities(parkId)
+    setTimeout(()=> {
+    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth' })
+    },700)
+
   removeParkInfo()
    }
   }
@@ -209,9 +213,6 @@ function getWeather() {
   })
 }
 
-function handleWeatherError(){
-
-}
 function renderCurrentWeather(data){
   const currentWeather = document.getElementById('currentWeather')
   const maxWeather = document.getElementById('maxWeather')
