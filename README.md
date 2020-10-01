@@ -11,19 +11,24 @@ A mobile responsive web application for users who want to find national parks ar
   -- https://openweathermap.org
 - National Park Service API
   -- https://www.nps.gov/subjects/developer/index.htm
+## Live Demo
 
 ## Features
-1. User inputs state.
-2. List of Nathional parks for that state is dynamically created with the data received from the National Parks Service API.
-3. User clickes a park.
-4. Brief informations and current weather as well as seven days forecast of that park is displayed.
+- User inputs a state.
+- User can view the list of National parks for that state.
+- User can click and view brief information of the park.
+- User can view current weather as well as seven days forecast of that park.
 
 ## Preview
-
+<img src="images/preview.gif">
 
 ## Getting Started
 1. Clone the repository.
-    ```shell
-    git clone https://github.com/unajeon/national-parks-and-weather-finder
-    cd national-parks-and-weather-fidner
     ```
+    git clone https://github.com/unajeon/national-parks-and-weather-finder
+    ```
+2. Navigate to the directory
+    ```
+      cd national-parks-and-weather-fidner
+    ```
+3. Open the application from `shell index.html` in code editor
