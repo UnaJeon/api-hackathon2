@@ -167,11 +167,20 @@ li{
     font-style: normal;
 
 }
+.sevenDayTableError{
+  border: solid 2px tan;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
 
 .weather_table{
 padding:5rem;
 }
-
+.error{
+  text-align: center;
+  padding-top: 1rem;
+}
 .display{
   display: none;
 }

@@ -4,10 +4,10 @@ searchButton.addEventListener('click',checkStatecode)
 const cardSection = document.querySelector("section.cardSection")
 const parkPage = document.getElementById('parkPage')
 const modal = document.getElementById('modal')
-
-
-
-$('.loader').hide()
+const loader = document.getElementById('loader')
+const rowDiv = document.getElementById('rowDiv')
+const rowDiv2 = document.getElementById('rowDiv2')
+loader.classList.add("display")
 
 function checkStatecode() {
   const modalDiv = document.createElement("div")
@@ -43,7 +43,7 @@ function checkStatecode() {
       modal.classList.remove('display')
     }else{
       modal.setAttribute("class","display")
-      $('.loader').show()
+      loader.classList.remove("display")
       getParkList()
       inputField.value = ''
     }
@@ -68,6 +68,7 @@ function getParkList(){
     },
     error: error => {
       console.log(error)
+      handleParklistError()
     }
   })
   removeParkList();
@@ -95,10 +96,12 @@ function getList(parks) {
   }
 
 function getPark() {
-  // cardSection.className +=" display"
-    // console.log("this is the Park id: " +this.id)
     var parkId = this.id
     getActivities(parkId)
+    setTimeout(()=> {
+    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth' })
+    },700)
+
   removeParkInfo()
    }
   }
@@ -110,7 +113,6 @@ function getActivities(parkIdParam){
       url: "https://developer.nps.gov/api/v1/parks?parkCode=" + letsGoButton + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
       success:
         parks => {
-          //console.log(parks.data)
           getParkInfo(parks)
           getListOfActivities(parks)
         },
@@ -121,7 +123,6 @@ function getActivities(parkIdParam){
   }
 
 function getParkInfo(parks){
-  const selectRowDiv = document.getElementById('rowDiv')
     const description = parks.data[0].description
     const cityName = parks.data[0].addresses[0].city
     const getParkImg = parks.data[0].images[0].url
@@ -168,17 +169,14 @@ function getParkInfo(parks){
     imgbox.append(parkImage)
     topContainerDiv.append(weather,imgbox, contentBox)
     contentBox.append(paragraph)
-    selectRowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
-    parkPage.append(selectRowDiv)
+    rowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
+    parkPage.append(rowDiv)
     getWeather()
 }
 
  function getListOfActivities(parks){
-  //  console.log(parks.data)
-   const selectRowDiv2 = document.getElementById('rowDiv2')
-    const activities = parks.data[0].activities
-    //console.log(activities)
 
+    const activities = parks.data[0].activities
     const activitiesDiv = document.createElement('div')
     activitiesDiv.setAttribute("class", "activities d-flex")
     activitiesDiv.setAttribute("id", "activities")
@@ -192,8 +190,8 @@ function getParkInfo(parks){
       list.textContent = parks.data[0].activities[i].name
       ulList.append(list)
     }
-    parkPage.append(selectRowDiv2)
-    selectRowDiv2.append(activitiesDiv)
+    parkPage.append(rowDiv2)
+    rowDiv2.append(activitiesDiv)
 
 }
 
@@ -211,10 +209,18 @@ function getWeather() {
     },
     error: error => {
       console.log(error)
+      handleCurrentWeatherError()
+      handleErrorRenderSevenDayWeather()
     }
-
   })
 }
+
+function handleCurrentWeatherError(){
+  parkPage.classList.remove("display")
+  const nameOfCity = document.getElementById('nameOfCity')
+  nameOfCity.textContent = "Could not retreive the weather, please try again."
+}
+
 function renderCurrentWeather(data){
   const currentWeather = document.getElementById('currentWeather')
   const maxWeather = document.getElementById('maxWeather')
@@ -233,7 +239,6 @@ function renderCurrentWeather(data){
   weatherIcon.append(forecastRn)
   var latitude = data.coord.lat
   var longitude = data.coord.lon
-
   getSevenDayWeather(latitude, longitude)
 }
 
@@ -242,16 +247,22 @@ function getSevenDayWeather(lat,long){
     method:"GET",
     url: "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+long+"&exclude=current,minutely,hourly&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success:data=>{
-      //console.log(data.daily[0].weather[0].main)
-      console.log(data)
-
       renderSevenDayWeather(data)
-
     },
     error:error=>{
       console.log(error)
+      handleErrorRenderSevenDayWeather()
     }
   })
+}
+function handleErrorRenderSevenDayWeather(){
+  const sevenDaysTableError = document.createElement("div")
+  sevenDaysTableError.setAttribute("class", "sevenDayTableError")
+  const sevenDaypElement = document.createElement('h5')
+  sevenDaypElement.setAttribute("class", "p-4 m-3")
+  sevenDaypElement.textContent = "Could not retreive seven days weather for this area, please try again."
+  sevenDaysTableError.append(sevenDaypElement)
+  rowDiv2.append(sevenDaysTableError)
 }
 
 function renderSevenDayWeather(data){
@@ -277,7 +288,6 @@ function renderSevenDayWeather(data){
   thead.append(tr)
   weatherTable.append(thead,tbody)
   sevenDaysTable.append(weatherTable)
-  const rowDiv2 = document.getElementById('rowDiv2')
   rowDiv2.append(sevenDaysTable)
 
   for (let i=0;i<data.daily.length; i++){
@@ -320,4 +330,16 @@ let rowDiv2 = document.getElementById("rowDiv2")
 while(rowDiv2.firstChild){
   rowDiv2.removeChild(rowDiv2.lastChild)
 }
+}
+function handleParklistError(){
+  if(loader){
+    loader.classList.add("display")
+  }
+parkPage.classList.remove("display")
+var errorDiv = document.createElement('div')
+var errorParagraph = document.createElement('p')
+errorDiv.setAttribute("class", "error")
+errorParagraph.textContent = "National Parks could not be retrieved. Please try again."
+errorDiv.append(errorParagraph)
+rowDiv.append(errorDiv)
 }
