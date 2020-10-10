@@ -9,12 +9,12 @@ body{
 input{
   width:auto;
 }
+
 .bg-text{
   color:whitesmoke;
   font-family: 'Lato';
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
   width: 100%;
 }

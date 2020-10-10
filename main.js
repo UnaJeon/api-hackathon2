@@ -1,64 +1,18 @@
 const searchButton = document.getElementById("searchButton")
 const inputField = document.getElementById("inputField")
-searchButton.addEventListener('click',checkStatecode)
+searchButton.addEventListener('click',getParkList)
 const cardSection = document.querySelector("section.cardSection")
 const parkPage = document.getElementById('parkPage')
-const modal = document.getElementById('modal')
 const loader = document.getElementById('loader')
 const rowDiv = document.getElementById('rowDiv')
 const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
-function checkStatecode() {
-  const modalDiv = document.createElement("div")
-  modalDiv.setAttribute("class", "modal-overlay")
-  const modalSecondDiv = document.createElement("div")
-  modalSecondDiv.setAttribute("class", "modal-content")
-  const pElement = document.createElement("p")
-  pElement.setAttribute("id", "pElement")
-  const modalButton = document.createElement("button")
-  modalButton.setAttribute("class","btn btn-primary")
-  modalButton.textContent = "Close"
-  modalSecondDiv.append(pElement, modalButton)
-  modalDiv.append(modalSecondDiv)
-  modal.append(modalDiv)
-  modalButton.addEventListener("click",closeModal)
-
-  const stateCode = ["wa", "or", "ca", "nv", "ak", "az", "nm", "tx", "ut", "co", "wy", "id", "mt", "wy", "nd", "sd", "mn", "mi", "il", "mo", "ar", "tn", "hy", "oh", "in", "va", "nc", "sc", "fl", "me", "as", "hi", "vi"]
-  for (let i = 0; i < stateCode.length; i++) {
-    if (!inputField.value) {
-      const cardSection = document.getElementById("cardSection")
-      if(cardSection.firstChild){
-        removeParkList()
-        removeParkInfo()
-        pElement.textContent = "Please fill in the box"
-        modal.classList.remove('display')
-      }else{
-        pElement.textContent = "Please fill in the box"
-      }
-    } else if (inputField.value !==stateCode[i]) {
-      removeParkList()
-      removeParkInfo()
-      pElement.textContent = "Please write correct state code"
-      modal.classList.remove('display')
-    }else{
-      modal.setAttribute("class","display")
-      loader.classList.remove("display")
-      getParkList()
-      inputField.value = ''
-    }
-  }
-}
-
-function closeModal(){
-  modal.setAttribute("class", "display")
-}
-
 function getParkList(){
   const state = inputField.value;
-  if(!state){
-    checkStatecode()
-  }
+  loader.classList.remove("display")
+  inputField.value = ''
+
   $.ajax({
     method: "GET",
     url: "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
@@ -75,13 +29,17 @@ function getParkList(){
 }
 function getList(parks) {
   var getlist = parks.data
-
+  if(!parks.data){
+    const div = document.createElement('div')
+    const h2 = document.createElement('h2')
+    h2.textContent = "There is no national park"
+   div.append(h2)
+  cardSection.append(div)
+  }else{
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
     cardDiv.setAttribute("class", "card bg-dark text-white")
     const img = document.createElement('img')
-    const url = getlist[i].images[0].url
-    img.setAttribute('src', url)
     img.setAttribute('class', 'card-img')
     const cardBodyDiv = document.createElement('div')
     cardBodyDiv.setAttribute('class', 'card-img-overlay')
@@ -93,6 +51,13 @@ function getList(parks) {
     cardDiv.append(img, cardBodyDiv)
     cardBodyDiv.append(cardTitle)
     cardDiv.addEventListener("click", getPark)
+    if(!getlist[i].images[0]){
+      img.setAttribute('src', 'images/no-img-found.png')
+    }else{
+      const url = getlist[i].images[0].url
+      img.setAttribute('src', url)
+    }
+  }
   }
 
 function getPark() {
@@ -123,10 +88,9 @@ function getActivities(parkIdParam){
   }
 
 function getParkInfo(parks){
-    const description = parks.data[0].description
-    const cityName = parks.data[0].addresses[0].city
-    const getParkImg = parks.data[0].images[0].url
+
     const parkName = parks.data[0].fullName
+    const description = parks.data[0].description
     const parkNameTitle = document.createElement('h3')
     parkNameTitle.setAttribute("class","parkTitle pt-4")
     parkNameTitle.textContent = parkName
@@ -139,11 +103,9 @@ function getParkInfo(parks){
     contentBox.setAttribute("class", "contentBox")
     const paragraph = document.createElement('p')
     const parkImage = document.createElement('img')
-    parkImage.setAttribute('src', getParkImg)
     parkImage.setAttribute('class', 'parkImage')
     paragraph.textContent = description
     paragraph.setAttribute("class", "city")
-    paragraph.setAttribute("id", cityName)
     const weather = document.createElement('div')
     weather.setAttribute("class", "weather")
     const cityDiv = document.createElement("div")
@@ -163,7 +125,14 @@ function getParkInfo(parks){
     link.setAttribute("target", "_blank")
     link.setAttribute("href", parks.data[0].url)
     link.textContent = parks.data[0].url
-
+  if (!parks.data[0].images[0] || !parks.data[0].addresses[0]){
+    parkImage.setAttribute('src', 'images/no-img-found.png')
+  }else{
+    const cityName = parks.data[0].addresses[0].city
+    const getParkImg = parks.data[0].images[0].url
+    parkImage.setAttribute('src', getParkImg)
+    paragraph.setAttribute("id", cityName)
+  }
     moreInfoP.append(link)
     weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
     imgbox.append(parkImage)
@@ -175,7 +144,6 @@ function getParkInfo(parks){
 }
 
  function getListOfActivities(parks){
-
     const activities = parks.data[0].activities
     const activitiesDiv = document.createElement('div')
     activitiesDiv.setAttribute("class", "activities d-flex")
@@ -201,7 +169,6 @@ function getWeather() {
     method: "GET",
     url: "https://api.openweathermap.org/data/2.5/weather?q="+getCityName+"&units=imperial&appid=44c444f17511a8bb6a7a59dcf93e8f54",
     success: data => {
-      //console.log(data.main.temp)
       parkPage.classList.remove("display")
       const nameOfCity = document.getElementById('nameOfCity')
       nameOfCity.textContent = getCityName
