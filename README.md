@@ -11,7 +11,7 @@ A mobile responsive web application for users who want to find national parks ar
   -- https://openweathermap.org
 - National Park Service API
   -- https://www.nps.gov/subjects/developer/index.htm
-  
+
 ## Live Demo
 Try the application live at https://national-parks-and-weather-finder.unajeon.com/
 
@@ -22,7 +22,7 @@ Try the application live at https://national-parks-and-weather-finder.unajeon.co
 - User can view current weather as well as seven days forecast of that park.
 
 ## Preview
-<img src="images/preview.gif">
+<img src="images/npwf-preview.gif">
 
 ## Getting Started
 1. Clone the repository.
