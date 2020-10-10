@@ -78,7 +78,6 @@ function getActivities(parkIdParam){
       url: "https://developer.nps.gov/api/v1/parks?parkCode=" + letsGoButton + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
       success:
         parks => {
-          console.log(parks)
           getParkInfo(parks)
           getListOfActivities(parks)
         },
