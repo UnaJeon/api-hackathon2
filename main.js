@@ -78,6 +78,7 @@ function getActivities(parkIdParam){
       url: "https://developer.nps.gov/api/v1/parks?parkCode=" + letsGoButton + "&api_key=dI78ci2wrHGtsbYSYfGzs5d4kgbVX8KZODm1zstV",
       success:
         parks => {
+          console.log(parks)
           getParkInfo(parks)
           getListOfActivities(parks)
         },
@@ -125,7 +126,7 @@ function getParkInfo(parks){
     link.setAttribute("target", "_blank")
     link.setAttribute("href", parks.data[0].url)
     link.textContent = parks.data[0].url
-  if (!parks.data[0].images[0] && !parks.data[0].addresses[0]){
+  if (!parks.data[0].images[0] || !parks.data[0].addresses[0]){
     parkImage.setAttribute('src', 'images/no-img-found.png')
   }else{
     const cityName = parks.data[0].addresses[0].city
