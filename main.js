@@ -9,34 +9,6 @@ const rowDiv = document.getElementById('rowDiv')
 const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
-// function checkStatecode()
-//   const stateCode = ["wa", "or", "ca", "nv", "ak", "az", "nm", "tx", "ut", "co", "wy", "id", "mt", "wy", "nd", "sd", "mn", "mi", "il", "mo", "ar", "tn", "hy", "oh", "in", "va", "nc", "sc", "fl", "me", "as", "hi", "vi"]
-//   for (let i = 0; i < stateCode.length; i++) {
-//     if (!inputField.value) {
-//       const cardSection = document.getElementById("cardSection")
-//       if(cardSection.firstChild){
-//         removeParkList()
-//         removeParkInfo()
-//         pElement.textContent = "Please fill in the box"
-//         modal.classList.remove('display')
-//       }else{
-//         pElement.textContent = "Please fill in the box"
-//       }
-//     } else if (inputField.value !==stateCode[i]) {
-//       removeParkList()
-//       removeParkInfo()
-//       pElement.textContent = "Please write correct state code"
-//       modal.classList.remove('display')
-//     }else{
-//       modal.setAttribute("class","display")
-//       loader.classList.remove("display")
-//       getParkList()
-//       inputField.value = ''
-//     }
-//   }
-// }
-
-
 function getParkList(){
   const state = inputField.value;
   loader.classList.remove("display")
