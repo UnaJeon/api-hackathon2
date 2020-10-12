@@ -16,7 +16,7 @@ A mobile responsive web application for users who want to find national parks ar
 Try the application live at https://national-parks-and-weather-finder.unajeon.com/
 
 ## Features
-- User inputs a state.
+- User can select a desiring state with a dropdown menu
 - User can view the list of National parks for that state.
 - User can click and view brief information of the park.
 - User can view current weather as well as seven days forecast of that park.
