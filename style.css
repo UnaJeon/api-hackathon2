@@ -16,7 +16,6 @@ input{
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 100%;
 }
 
 .loader {
@@ -70,6 +69,7 @@ margin-bottom: 10px;
 .card-img {
   width: 300px;
   height: 150px;
+  opacity: 0.7;
 }
 .card{
   margin: 3px;

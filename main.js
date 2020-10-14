@@ -11,7 +11,6 @@ loader.classList.add("display")
 function getParkList(){
   const state = inputField.value;
   loader.classList.remove("display")
-  inputField.value = ''
 
   $.ajax({
     method: "GET",
