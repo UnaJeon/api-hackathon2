@@ -1,6 +1,8 @@
 body{
   width:100%;
-  background-color:#5c702f;
+  /* background-color:#5c702f; */
+  background-color:  #738148;
+  font-family: 'Lato';
 }
 
 input{
@@ -14,14 +16,14 @@ input{
   justify-content: center;
   background-image: url(images/forest-wallpaper.jpg);
   background-repeat: no-repeat;
-    background-size: cover;
+  background-size: cover;
 }
 .section1 h2{
 font-size: 3.5rem;
 }
 .bg-text{
   color:whitesmoke;
-  font-family: 'Lato';
+  /* font-family: 'Lato'; */
   text-align: center;
   flex-direction: column;
 }
@@ -72,10 +74,11 @@ margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 2rem;
 }
 
 .cardImage {
-  height: 13rem;
+  height: 10rem;
 }
 .card-text{
   text-align: center;
@@ -98,8 +101,8 @@ margin-bottom: 10px;
   flex-wrap: wrap;
 }
 .parkPage{
-  /* background-color:wheat; */
-  opacity: 0.8;
+  background-color#738148;
+  /* opacity: 0.6; */
   /* margin: 5rem; */
 }
 .top-container{
@@ -125,7 +128,7 @@ margin-bottom: 10px;
   justify-content: center;
   box-shadow: 0px 1px 10px 0px #cfcfcf;
   color: black;
-  background-color: tan;
+  background-color: #c4b497;
   padding: 10px;
   margin: auto;
   text-align: center;
@@ -167,7 +170,7 @@ li{
   margin-top: 16px;
   color:black;
   font-family: 'Lato', sans-serif;
-  background-color: wheat;
+  background-color:#8c815f;
   box-shadow: 0px 1px 10px 0px #cfcfcf;
 }
 

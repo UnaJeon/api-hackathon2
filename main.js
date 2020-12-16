@@ -38,7 +38,7 @@ function getList(parks) {
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
     cardDiv.setAttribute("class", "card")
-    cardDiv.setAttribute("style", "width: 18rem")
+    cardDiv.setAttribute("style", "width: 15rem")
     const img = document.createElement('img')
     img.setAttribute('class', 'card-img-top cardImage')
     const cardBodyDiv = document.createElement('div')
