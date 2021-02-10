@@ -283,9 +283,10 @@ function renderSevenDayWeather(data){
 }
 
 function removeParkList() {
-  while (cardSection .firstElementChild) {
+  while (cardSection.firstElementChild) {
     cardSection.firstElementChild.remove()
   }
+  $('.loader').show()
 }
 
 function removeParkInfo(){
