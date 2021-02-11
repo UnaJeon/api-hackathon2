@@ -1,7 +1,7 @@
 body{
   width:100%;
   /* background-color:#5c702f; */
-  background-color:rgb(247,241,218);
+  background-color:rgb(199, 201, 199);
   font-family: 'Lato';
 }
 
@@ -22,7 +22,9 @@ input{
 font-size: 3.5rem;
 }
 .bg-text{
-  color:whitesmoke;
+  color: rgb(247,241,218);
+  text-shadow: -2px 4px 0 burlywood;
+  /* color:whitesmoke; */
   /* font-family: 'Lato'; */
   text-align: center;
   flex-direction: column;
@@ -89,6 +91,7 @@ margin-bottom: 10px;
   margin: 3px;
   cursor: pointer;
   border: none;
+  background-color: rgb(245, 239, 239);
 }
 .card:hover{
   transform: scale(1.1) ;

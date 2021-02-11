@@ -18,6 +18,9 @@ function getParkList(){
     success: parks => {
       $('.loader').hide()
       getList(parks)
+      setTimeout(() => {
+        document.getElementById('cardSection').scrollIntoView({ behavior: 'smooth' })
+      }, 700)
     },
     error: error => {
       console.log(error)
