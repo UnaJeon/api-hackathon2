@@ -12,12 +12,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="loader" id="loader"></div>
+  <div class="loaderPart" id="loader">
+    <div class="loader"></div>
+  </div>
   <main id="frontPage" class="main" >
-    <section class="mt-5">
+    <section class="section1">
      <div class="form-group bg-text" >
-      <h2>National Parks and Weather Finder</h2>
-      <div class="input-group justify-content-center">
+      <h2>Explore National Parks<br>
+         Around the States</h2>
+      <div class="input-group justify-content-center mt-5">
         <select id="inputField">
           <option value="">Choose</option>
           <option value="AL">Alabama</option>
@@ -72,7 +75,7 @@
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
-      <button type="button" id="searchButton" class="btn btn-primary">Search<i class="fa fa-search ml-3" ></i></button>
+      <button type="button" id="searchButton" class="btn btn-dark">Search<i class="fa fa-search ml-3" ></i></button>
    </div>
   </div>
     </section>
@@ -81,6 +84,7 @@
 
     <section id="parkPage" class="parkPage display">
       <div id="rowDiv" class="rowDiv"></div>
+      <div id="rowDiv1" class="rowDiv1"></div>
       <div id="rowDiv2" class="rowDiv2"></div>
     </section>
     </main>

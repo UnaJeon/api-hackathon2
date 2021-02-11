@@ -18,6 +18,9 @@ function getParkList(){
     success: parks => {
       $('.loader').hide()
       getList(parks)
+      setTimeout(() => {
+        document.getElementById('cardSection').scrollIntoView({ behavior: 'smooth' })
+      }, 700)
     },
     error: error => {
       console.log(error)
@@ -37,13 +40,14 @@ function getList(parks) {
   }else{
   for (let i = 0; i < getlist.length; i++) {
     const cardDiv = document.createElement('div')
-    cardDiv.setAttribute("class", "card bg-dark text-white")
+    cardDiv.setAttribute("class", "card")
+    cardDiv.setAttribute("style", "width: 15rem")
     const img = document.createElement('img')
-    img.setAttribute('class', 'card-img')
+    img.setAttribute('class', 'card-img-top cardImage')
     const cardBodyDiv = document.createElement('div')
-    cardBodyDiv.setAttribute('class', 'card-img-overlay')
-    const cardTitle = document.createElement('h5')
-    cardTitle.setAttribute('class', 'card-title')
+    cardBodyDiv.setAttribute('class', 'card-body')
+    const cardTitle = document.createElement('p')
+    cardTitle.setAttribute('class', 'card-text')
     cardTitle.textContent = getlist[i].fullName
     cardDiv.setAttribute('id', getlist[i].parkCode)
     cardSection.append(cardDiv)
@@ -282,9 +286,10 @@ function renderSevenDayWeather(data){
 }
 
 function removeParkList() {
-  while (cardSection .firstElementChild) {
+  while (cardSection.firstElementChild) {
     cardSection.firstElementChild.remove()
   }
+  $('.loader').show()
 }
 
 function removeParkInfo(){

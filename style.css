@@ -1,33 +1,47 @@
 body{
   width:100%;
-  background-image: url(images/background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-color:#5c702f; */
+  background-color:rgb(199, 201, 199);
+  font-family: 'Lato';
 }
 
 input{
   width:auto;
 }
 
-.bg-text{
-  color:whitesmoke;
-  font-family: 'Lato';
+.section1{
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(images/forest-wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.section1 h2{
+font-size: 3.5rem;
+}
+.bg-text{
+  color: rgb(247,241,218);
+  text-shadow: -2px 4px 0 burlywood;
+  /* color:whitesmoke; */
+  /* font-family: 'Lato'; */
   text-align: center;
+  flex-direction: column;
 }
 
-.loader {
-  border: 8px solid #f3f3f3;
+.loaderPart {
+  display:flex;
+  justify-content: center;
+}
+.loader{
+ border: 8px solid #f3f3f3;
   border-top: 8px solid burlywood;
   border-radius: 50%;
   width: 80px;
   height: 80px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
+  top: 70%;
   animation: spin 2s linear infinite;
 }
 
@@ -64,24 +78,27 @@ margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 2rem;
 }
 
-.card-img {
-  width: 300px;
-  height: 150px;
-  opacity: 0.7;
+.cardImage {
+  height: 10rem;
+}
+.card-text{
+  text-align: center;
 }
 .card{
   margin: 3px;
   cursor: pointer;
   border: none;
+  background-color: rgb(245, 239, 239);
 }
 .card:hover{
   transform: scale(1.1) ;
 }
-.card-title{
-  font-size: 1rem;
-  color:whitesmoke;
+.rowDiv{
+  display: flex;
+  flex-direction: column;
 }
 .rowDiv2{
   display:flex;
@@ -89,10 +106,9 @@ margin-bottom: 10px;
   flex-wrap: wrap;
 }
 .parkPage{
-  width: 100%;
-  background-color:wheat;
-  opacity: 0.8;
-  margin-top: 2rem;
+  background-color:rgb(247,241,218);
+  /* opacity: 0.6; */
+  /* margin: 5rem; */
 }
 .top-container{
   width:100%;
@@ -117,12 +133,15 @@ margin-bottom: 10px;
   justify-content: center;
   box-shadow: 0px 1px 10px 0px #cfcfcf;
   color: black;
-  background-color: tan;
+  background-color: #c4b497;
   padding: 10px;
-  margin: 1rem auto;
-  width:50%;
+  margin: auto;
+  text-align: center;
+  flex-basis: 30%;
  }
-
+.imgbox{
+  margin: auto;
+}
 .temp{
   font-size: 30px;
   }
@@ -135,14 +154,14 @@ h3{
   text-align: center;
 }
 .parkImage{
-  width: auto ;
+  /* width: 40rem; */
   max-width: 100% ;
-  height: auto ;
+  height: 20rem;
   border-radius: 2%;
 }
 
 li{
-    margin-top: 0.8rem;
+  margin-top: 0.8rem;
   font-size: 1.2rem;
   font-family: 'Lato';
 }
@@ -156,7 +175,8 @@ li{
   margin-top: 16px;
   color:black;
   font-family: 'Lato', sans-serif;
-  background-color: wheat;
+  background-color:#c4b497;
+  box-shadow: 0px 1px 10px 0px #cfcfcf;
 }
 
 @font-face {
@@ -190,8 +210,8 @@ padding:5rem;
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    .card-img{
-      width: 250px;
+    .parkImage{
+      height:18rem;
     }
     h5{
       font-size: 0.5rem;
@@ -206,9 +226,7 @@ padding:5rem;
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-    .card-img{
-      width: 200px;
-    }
+
     h5{
       font-size: 0.5rem;
     }
@@ -222,9 +240,7 @@ padding:5rem;
   and (max-device-width: 1024px)
   and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 1) {
-    .card-img{
-      width: 300px;
-    }
+
     h5{
       font-size: 0.8rem;
     }
@@ -239,9 +255,7 @@ padding:5rem;
   and (max-device-width: 1024px)
   and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 1) {
-    .card-img{
-      width: 300px;
-    }
+
     h5{
       font-size: 0.8rem;
     }
