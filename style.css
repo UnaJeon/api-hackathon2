@@ -37,13 +37,13 @@ letter-spacing: 0.8rem;
   justify-content: center;
 }
 .loader{
- border: 8px solid #f3f3f3;
-  border-top: 8px solid burlywood;
+ border: 10px solid #f3f3f3;
+  border-top: 10px solid burlywood;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: absolute;
-  top: 70%;
+  top: 45%;
   animation: spin 2s linear infinite;
 }
 
