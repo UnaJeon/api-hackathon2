@@ -1,8 +1,8 @@
 body{
   width:100%;
-  /* background-color:#5c702f; */
-  background-color:rgb(199, 201, 199);
+  background-color:rgb(237,230,201);
   font-family: 'Lato';
+  color: grey;
 }
 
 input{
@@ -12,22 +12,24 @@ input{
 .section1{
   height: 100vh;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-image: url(images/forest-wallpaper.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
+
 }
-.section1 h2{
-font-size: 3.5rem;
+.section1 h1, .section1 h4{
+letter-spacing: 0.8rem;
 }
+
 .bg-text{
-  color: rgb(247,241,218);
-  text-shadow: -2px 4px 0 burlywood;
-  /* color:whitesmoke; */
-  /* font-family: 'Lato'; */
+  color:grey;
+  font-family: 'Lato';
   text-align: center;
   flex-direction: column;
+  margin-top: 3rem;
+
 }
 
 .loaderPart {
@@ -86,78 +88,77 @@ margin-bottom: 10px;
 }
 .card-text{
   text-align: center;
+  text-transform: uppercase;
 }
 .card{
   margin: 3px;
   cursor: pointer;
   border: none;
-  background-color: rgb(245, 239, 239);
+  background-color: rgb(252,247,233);
 }
 .card:hover{
   transform: scale(1.1) ;
 }
-.rowDiv{
+/* .rowDiv{
   display: flex;
   flex-direction: column;
+} */
+.imgbox{
+  text-align: center;
 }
 .rowDiv2{
   display:flex;
   justify-content: space-evenly;
+  margin-top: 2rem;
   flex-wrap: wrap;
 }
-.parkPage{
-  background-color:rgb(247,241,218);
-  /* opacity: 0.6; */
-  /* margin: 5rem; */
+.container{
+  display: grid;
 }
-.top-container{
-  width:100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-
-}
-
 .contentBox{
   font-size: 1.2rem;
   font-family: 'Lato';
-  margin:0.5rem;
   align-self: center;
+  color:rgb(119, 115, 115);
 }
 
 .weather{
-  display: flex;
-  flex-flow: column wrap;
-  align-content: center;
-  justify-content: center;
   box-shadow: 0px 1px 10px 0px #cfcfcf;
   color: black;
   background-color: #c4b497;
   padding: 10px;
   margin: auto;
   text-align: center;
-  flex-basis: 30%;
+  text-transform: uppercase;
  }
-.imgbox{
-  margin: auto;
-}
+ .cityName{
+   color:rgb(147, 147, 160);
+ }
+ .sevenDayTable h4{
+   text-align: center;
+   font-weight: bold;
+   text-transform: uppercase;
+ }
 .temp{
-  font-size: 30px;
+  font-size: 1.5rem;
   }
-
-h3{
-  font-family: 'Lato';
-  font-weight: bold;
-  font-style: normal;
-  font-size: 2rem;
+.activities h4{
   text-align: center;
+  text-transform: uppercase;
+}
+.activities li{
+  text-align:justify;
+  text-transform: capitalize;
+}
+.parkTitle{
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
 }
 .parkImage{
   /* width: 40rem; */
   max-width: 100% ;
   height: 20rem;
-  border-radius: 2%;
 }
 
 li{
@@ -167,18 +168,15 @@ li{
 }
 
 .table{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   margin-top: 16px;
   color:black;
   font-family: 'Lato', sans-serif;
-  background-color:#c4b497;
+  background-color:#ddd9d2;
   box-shadow: 0px 1px 10px 0px #cfcfcf;
 }
-
+.table td{
+  vertical-align: middle;
+}
 @font-face {
     font-family: 'orkneylight';
     src: url('fonts/orkney_light-webfont.woff') format('woff'),
@@ -213,12 +211,16 @@ padding:5rem;
     .parkImage{
       height:18rem;
     }
+    /* .section h2{
+      font-size: 0.3rem;
+    } */
     h5{
       font-size: 0.5rem;
     }
     h3{
       font-size: 1.5rem;
     }
+
 }
 
 @media only screen
