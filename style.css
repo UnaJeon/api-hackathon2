@@ -190,8 +190,12 @@ li{
          url('fonts/orkney_light-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-
 }
+
+.sevenDayTable{
+  text-align: center;
+}
+
 .sevenDayTableError{
   border: solid 2px tan;
   justify-content: center;

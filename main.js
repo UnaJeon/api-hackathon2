@@ -81,7 +81,7 @@ function getPark() {
     var parkId = this.id
     getActivities(parkId)
     setTimeout(()=> {
-    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth'})
     },700)
 
   removeParkInfo()
@@ -155,7 +155,6 @@ function getParkInfo(parks){
     moreInfoP.append(link)
     weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
     imgbox.append(parkImage)
-    // topContainerDiv.append(weather)
     containerDiv.append(row)
     row.append(imgbox,contentBox , weather)
     contentBox.append(paragraph,moreInfoP)
