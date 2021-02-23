@@ -9,9 +9,7 @@ const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
 const button =document.getElementById("topBtn")
-window.onscroll =function(){
-  scrollFunction()
-}
+window.addEventListener("scroll",scrollFunction)
 function scrollFunction(){
   if(document.body.scrollTop >20 || document.documentElement.scrollTop > 20){
     button.style.display = "block"
@@ -19,7 +17,7 @@ function scrollFunction(){
       button.style.display ="none"
     }
   }
-  document.getElementById("topBtn").addEventListener("click", topFunction)
+  button.addEventListener("click", topFunction)
 function topFunction(){
   document.body.scrollTop =0;
   document.documentElement.scrollTop = 0;
