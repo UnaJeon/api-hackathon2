@@ -113,12 +113,9 @@ function getParkInfo(parks){
     const parkNameTitle = document.createElement('h3')
     parkNameTitle.setAttribute("class","parkTitle pt-5 mb-5")
     parkNameTitle.textContent = parkName
-    // const topContainerDiv = document.createElement("div")
     const containerDiv= document.createElement("div")
     containerDiv.setAttribute("id","bottom-container")
     containerDiv.setAttribute("class","container")
-    // topContainerDiv.setAttribute("id", "top-container")
-    // topContainerDiv.setAttribute("class", "top-container")
     const row = document.createElement("div")
     row.setAttribute("class", "row")
     const imgbox = document.createElement("div")
