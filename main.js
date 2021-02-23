@@ -8,6 +8,22 @@ const rowDiv = document.getElementById('rowDiv')
 const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
+const button =document.getElementById("topBtn")
+window.onscroll =function(){
+  scrollFunction()
+}
+function scrollFunction(){
+  if(document.body.scrollTop >20 || document.documentElement.scrollTop > 20){
+    button.style.display = "block"
+    }else{
+      button.style.display ="none"
+    }
+  }
+  document.getElementById("topBtn").addEventListener("click", topFunction)
+function topFunction(){
+  document.body.scrollTop =0;
+  document.documentElement.scrollTop = 0;
+}
 function getParkList(){
   const state = inputField.value;
   loader.classList.remove("display")
