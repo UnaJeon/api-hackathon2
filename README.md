@@ -19,10 +19,11 @@ Try the application live at https://national-parks-and-weather-finder.unajeon.co
 - User can select a desiring state with a dropdown menu
 - User can view the list of National parks for that state.
 - User can click and view brief information of the park.
+- User can view activities they can do at the park.
 - User can view current weather as well as seven days forecast of that park.
 
 ## Preview
-<img src="images/npwf-preview.gif">
+<img src="images/national-park-finder-preview.gif">
 
 ## Getting Started
 1. Clone the repository.
