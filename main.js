@@ -8,6 +8,20 @@ const rowDiv = document.getElementById('rowDiv')
 const rowDiv2 = document.getElementById('rowDiv2')
 loader.classList.add("display")
 
+const button =document.getElementById("topBtn")
+window.addEventListener("scroll",scrollFunction)
+function scrollFunction(){
+  if(document.body.scrollTop >20 || document.documentElement.scrollTop > 20){
+    button.style.display = "block"
+    }else{
+      button.style.display ="none"
+    }
+  }
+  button.addEventListener("click", topFunction)
+function topFunction(){
+  document.body.scrollTop =0;
+  document.documentElement.scrollTop = 0;
+}
 function getParkList(){
   const state = inputField.value;
   loader.classList.remove("display")
@@ -67,7 +81,7 @@ function getPark() {
     var parkId = this.id
     getActivities(parkId)
     setTimeout(()=> {
-    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('parkPage').scrollIntoView({ behavior: 'smooth'})
     },700)
 
   removeParkInfo()
@@ -95,22 +109,24 @@ function getParkInfo(parks){
     const parkName = parks.data[0].fullName
     const description = parks.data[0].description
     const parkNameTitle = document.createElement('h3')
-    parkNameTitle.setAttribute("class","parkTitle pt-4")
+    parkNameTitle.setAttribute("class","parkTitle pt-5 mb-5")
     parkNameTitle.textContent = parkName
-    const topContainerDiv = document.createElement("div")
-    topContainerDiv.setAttribute("id", "top-container")
-    topContainerDiv.setAttribute("class", "top-container")
+    const containerDiv= document.createElement("div")
+    containerDiv.setAttribute("id","bottom-container")
+    containerDiv.setAttribute("class","container")
+    const row = document.createElement("div")
+    row.setAttribute("class", "row")
     const imgbox = document.createElement("div")
-    imgbox.setAttribute("class", "imgbox")
+    imgbox.setAttribute("class", "imgbox col-lg-5")
     const contentBox = document.createElement('div')
-    contentBox.setAttribute("class", "contentBox")
+    contentBox.setAttribute("class", "contentBox col-lg-5")
     const paragraph = document.createElement('p')
     const parkImage = document.createElement('img')
     parkImage.setAttribute('class', 'parkImage')
     paragraph.textContent = description
     paragraph.setAttribute("class", "city")
     const weather = document.createElement('div')
-    weather.setAttribute("class", "weather")
+    weather.setAttribute("class", "weather col-lg-2")
     const cityDiv = document.createElement("div")
     cityDiv.setAttribute("id", "nameOfCity")
     const tempDiv = document.createElement('div')
@@ -139,9 +155,10 @@ function getParkInfo(parks){
     moreInfoP.append(link)
     weather.append(cityDiv, tempDiv, weatherIconDiv, maxDiv, minDiv)
     imgbox.append(parkImage)
-    topContainerDiv.append(weather,imgbox, contentBox)
-    contentBox.append(paragraph)
-    rowDiv.append(parkNameTitle, topContainerDiv, moreInfoP)
+    containerDiv.append(row)
+    row.append(imgbox,contentBox , weather)
+    contentBox.append(paragraph,moreInfoP)
+    rowDiv.append(parkNameTitle, containerDiv)
     parkPage.append(rowDiv)
     getWeather()
 }
@@ -152,7 +169,7 @@ function getParkInfo(parks){
     activitiesDiv.setAttribute("class", "activities d-flex")
     activitiesDiv.setAttribute("id", "activities")
     const activityTitle = document.createElement('h4')
-    activityTitle.textContent = "Activities You Can Do..."
+    activityTitle.textContent = "Activities You Can Do Around the Area..."
     activitiesDiv.append(activityTitle)
     const ulList = document.createElement('ul')
     activityTitle.append(ulList)
@@ -195,6 +212,8 @@ function renderCurrentWeather(data){
   const currentWeather = document.getElementById('currentWeather')
   const maxWeather = document.getElementById('maxWeather')
   const minWeather = document.getElementById('minWeather')
+  const nameOfCity = document.getElementById('nameOfCity')
+  nameOfCity.setAttribute("class","cityName")
   currentWeather.textContent = Math.floor(data.main.temp) + " °F"
   maxWeather.textContent = "Highest: " + Math.floor(data.main.temp_max) + " °F"
   minWeather.textContent = "Lowest: " + Math.floor(data.main.temp_min) + " °F"
@@ -236,8 +255,10 @@ function handleErrorRenderSevenDayWeather(){
 }
 
 function renderSevenDayWeather(data){
+  const sevenDaysTitle = document.createElement("h4")
+  sevenDaysTitle.textContent = "Seven Days Weather Forecast"
   const sevenDaysTable = document.createElement("div")
-  sevenDaysTable.setAttribute("class", "sevenDayTable d-flex")
+  sevenDaysTable.setAttribute("class", "sevenDayTable d-flex flex-column")
   const weatherTable = document.createElement("table")
   weatherTable.setAttribute("class", "table")
   const thead = document.createElement('thead')
@@ -257,7 +278,7 @@ function renderSevenDayWeather(data){
   tr.append(dayth,highth,lowth,weatherth,forecastth)
   thead.append(tr)
   weatherTable.append(thead,tbody)
-  sevenDaysTable.append(weatherTable)
+  sevenDaysTable.append(sevenDaysTitle,weatherTable)
   rowDiv2.append(sevenDaysTable)
 
   for (let i=0;i<data.daily.length; i++){
